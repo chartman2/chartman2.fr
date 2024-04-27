@@ -1,0 +1,15 @@
+version: '3'
+
+tasks:
+  build:
+    desc: Construction des services Docker
+    cmds:
+      - UID_GID="$(id -u):$(id -g)" docker compose build
+  up:
+    desc: Démarrage des services Docker
+    cmds:
+      - UID_GID="$(id -u):$(id -g)" docker compose up
+  down:
+    desc: Arrêt des services Docker
+    cmds:
+      - docker compose down

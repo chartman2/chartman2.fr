@@ -24,13 +24,13 @@ services:
       - "traefik.http.routers.${APP_NAME}.entrypoints=http"
 
       # HTTPS
-      - "traefik.http.routers.${APP_NAME}-secure.service=chartman2-fr-secure"
+      - "traefik.http.routers.${APP_NAME}-secure.service=${APP_NAME}-secure"
       - "traefik.http.routers.${APP_NAME}-secure.rule=Host(`${APP_URL}`)"
       - "traefik.http.routers.${APP_NAME}-secure.entrypoints=https"
       - "traefik.http.routers.${APP_NAME}-secure.tls=true"
 
       # WSS
-      - "traefik.http.routers.${APP_NAME}-wss.service=chartman2-fr-wss"
+      - "traefik.http.routers.${APP_NAME}-wss.service=${APP_NAME}-wss"
       - "traefik.http.routers.${APP_NAME}-wss.rule=Host(`${APP_WS_URL}`)"
       - "traefik.http.routers.${APP_NAME}-wss.entrypoints=https"
       - "traefik.http.routers.${APP_NAME}-wss.tls=true"
@@ -38,7 +38,7 @@ services:
       # Redirection
       - "traefik.http.middlewares.${APP_NAME}-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.${APP_NAME}-redirect.redirectscheme.permanent=true"
-      - "traefik.http.routers.${APP_NAME}.middlewares=chartman2-fr-redirect"
+      - "traefik.http.routers.${APP_NAME}.middlewares=${APP_NAME}-redirect"
 
       # Port interne
       - "traefik.http.services.${APP_NAME}-secure.loadbalancer.server.port=3000"
@@ -46,6 +46,43 @@ services:
     expose:
       - 3000
       - 24678
+    networks:
+      - chartman2-fr-network
+
+  vscode:
+    container_name: vscode
+    # image: codercom/code-server
+    build: 
+      context: ./
+      dockerfile: Dockerfile.vscode
+    volumes:
+      - "$HOME/.local:/home/coder/.local"
+      - "$HOME/.config:/home/coder/.config"
+      - "$PWD:/home/coder/project"
+    environment:
+      - "DOCKER_USER=${USER}"
+    user: ${UID_GID}
+    labels:
+      # Ajout dans traefik
+      - "traefik.enable=true"
+      
+      # HTTP
+      - "traefik.http.routers.${APP_VSCODE_NAME}.rule=Host(`${APP_VSCODE_URL}`)"
+      - "traefik.http.routers.${APP_VSCODE_NAME}.entrypoints=http"
+
+      # HTTPS
+      - "traefik.http.routers.${APP_VSCODE_NAME}-secure.service=${APP_VSCODE_NAME}-secure"
+      - "traefik.http.routers.${APP_VSCODE_NAME}-secure.rule=Host(`${APP_VSCODE_URL}`)"
+      - "traefik.http.routers.${APP_VSCODE_NAME}-secure.entrypoints=https"
+      - "traefik.http.routers.${APP_VSCODE_NAME}-secure.tls=true"
+      
+      # Redirection
+      - "traefik.http.middlewares.${APP_VSCODE_NAME}-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.${APP_VSCODE_NAME}-redirect.redirectscheme.permanent=true"
+      - "traefik.http.routers.${APP_VSCODE_NAME}.middlewares=${APP_VSCODE_NAME}-redirect"
+
+      # Port interne
+      - "traefik.http.services.${APP_VSCODE_NAME}-secure.loadbalancer.server.port=8080"
     networks:
       - chartman2-fr-network
 

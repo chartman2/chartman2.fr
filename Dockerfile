@@ -11,6 +11,8 @@ RUN apk --no-cache add git \
 
 COPY . .
 
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
 RUN chown -Rf node:node /app
 
 USER node

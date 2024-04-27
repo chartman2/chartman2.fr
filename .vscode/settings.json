@@ -1,7 +1,15 @@
 {
     "editor.tabSize": 2,
     "sonarlint.connectedMode.project": {
-        "connectionId": "https://sonarqube.traefik.me",
+        "connectionId": "sonarqube",
         "projectKey": "chartman2.fr"
-    }
+    },
+    "workbench.colorTheme": "Two Monokai Darker",
+    "vitest.enable": true,
+    "vitest.showFailMessages": true,
+    "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace",
+    "vitest.debugExclude": [
+        "<node_internals>/**",
+        "**/node_modules/**"
+    ]
 }
