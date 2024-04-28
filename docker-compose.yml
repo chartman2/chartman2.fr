@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 
 services:
   frontend:
@@ -55,6 +55,8 @@ services:
     build: 
       context: ./
       dockerfile: Dockerfile.vscode
+    depends_on:
+      - frontend
     volumes:
       - "$HOME/.local:/home/coder/.local"
       - "$HOME/.config:/home/coder/.config"

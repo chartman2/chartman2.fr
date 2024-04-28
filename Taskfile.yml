@@ -8,7 +8,8 @@ tasks:
   up:
     desc: Démarrage des services Docker
     cmds:
-      - UID_GID="$(id -u):$(id -g)" docker compose up
+      - UID_GID="$(id -u):$(id -g)" docker compose up -d
+      - docker compose exec frontend sh
   down:
     desc: Arrêt des services Docker
     cmds:

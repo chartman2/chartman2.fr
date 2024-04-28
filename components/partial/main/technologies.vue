@@ -7,7 +7,7 @@
       <v-container>
         <v-row class="d-flex justify-space-evenly">
           <v-col
-            v-for="stat of stats"
+            v-for="(stat, iStat) of stats"
             :key="stat.title"
             cols="6"
             md="3"
@@ -15,6 +15,8 @@
           >
             <div
               class="text-h3 text-white font-weight-black mb-4 pt-6 justify-center"
+              v-aos="['animate__zoomIn']"
+              :data-aos-delay="`0.` + ((iStat + 1) * 5) + `s`"
             >
               {{ stat.value }}
               <v-icon
