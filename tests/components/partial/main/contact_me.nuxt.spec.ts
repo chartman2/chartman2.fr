@@ -4,13 +4,13 @@ import { describe, it, expect } from 'vitest'
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 
 import TestResource from '~~/components/partial/main/contact_me.vue'
-import { mount } from '@vue/test-utils'
 
-global.fetch = vi.fn()
+global.$fetch = vi.fn()
 
 function createFetchResponse(data) {
-  return { json: () => new Promise((resolve) => resolve(data)) }
+  return { json: () => Promise.resolve(data) }
 }
+
 
 describe('Components - partial/main/contact_me', async () => {
   it('is a Vue instance', async () => {
@@ -40,11 +40,11 @@ describe('Components - partial/main/contact_me', async () => {
       shallow: true
     })
 
-    fetch.mockResolvedValue(createFetchResponse(true))
+    $fetch.mockResolvedValue(createFetchResponse(true))
     
     wrapper.vm.sendEmail()
     
-    expect(fetch).toHaveBeenCalledTimes(0)
+    expect($fetch).toHaveBeenCalledTimes(0)
   })
 
   it('can send email', async () => {
@@ -52,7 +52,7 @@ describe('Components - partial/main/contact_me', async () => {
       shallow: true
     })
 
-    fetch.mockResolvedValue(createFetchResponse(true))
+    $fetch.mockResolvedValue(createFetchResponse(true))
 
     wrapper.vm.name.value = 'test name'
     wrapper.vm.email.value = 'test@ŧest.com'
@@ -62,6 +62,6 @@ describe('Components - partial/main/contact_me', async () => {
     
     wrapper.vm.sendEmail()
     
-    expect(fetch).toHaveBeenCalledTimes(1)
+    expect($fetch).toHaveBeenCalledTimes(1)
   })
 })

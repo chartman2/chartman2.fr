@@ -107,7 +107,6 @@ const sendEmail = async () => {
       }
     })
 
-
     console.log(result)
   }
 };
