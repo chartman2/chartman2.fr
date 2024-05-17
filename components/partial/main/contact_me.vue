@@ -97,31 +97,18 @@ const messageRules = [
 
 const sendEmail = async () => {
   if (valid.value === true) {
-    fetch("https://api.chartman2.fr/contacts/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        contact: {
-          name,
-          email,
-          subject,
-          message,
-        },
-      }),
+    const result = await $fetch('/api/email', {
+      method: 'post',
+      body: {
+        name: name.value,
+        email: email.value,
+        subject: subject.value,
+        message: message.value
+      }
     })
-      // .then((response) => response.json())
-      .then((response) => {
-        valid.value = false
-        name.value = ""
-        email.value = ""
-        subject.value = ""
-        message.value = ""
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+
+
+    console.log(result)
   }
 };
 </script>

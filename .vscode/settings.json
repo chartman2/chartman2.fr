@@ -6,6 +6,7 @@
     },
     "workbench.colorTheme": "Two Monokai Darker",
     "vitest.enable": true,
+    "vitest.nodeEnv": null,
     "vitest.showFailMessages": true,
     "editor.fontFamily": "'Fira Code', 'Droid Sans Mono', 'monospace', monospace",
     "vitest.debugExclude": [

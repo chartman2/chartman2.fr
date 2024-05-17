@@ -1,17 +1,13 @@
 FROM node:lts-alpine
 
-RUN npm install -g pnpm@8.15.4
+RUN npm install -g pnpm@9.0.6
 
 WORKDIR /app
 
 RUN apk --no-cache add git \
     && rm -rf /var/cache/apk/*
 
-# COPY ./package*.json /app/
-
 COPY . .
-
-RUN curl -fsSL https://code-server.dev/install.sh | sh
 
 RUN chown -Rf node:node /app
 
@@ -21,5 +17,3 @@ RUN pnpm config set store-dir /home/node/.local/share/pnpm/store/v3 --global \
     && pnpm install
 
 ENV PATH ./node_modules/.bin/:$PATH
-
-# ENTRYPOINT ["/bin/sh"]

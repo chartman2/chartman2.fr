@@ -45,7 +45,8 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/eslint',
     'nuxt3-aos',
-    '@dargmuesli/nuxt-cookie-control'
+    '@dargmuesli/nuxt-cookie-control',
+    'nuxt-resend'
   ],
   vuetify: {
     moduleOptions: {

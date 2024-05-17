@@ -9,6 +9,7 @@ tasks:
     desc: Démarrage des services Docker
     cmds:
       - UID_GID="$(id -u):$(id -g)" docker compose up -d
+      - cat ~/.config/code-server/config.yaml
       - docker compose exec frontend sh
   down:
     desc: Arrêt des services Docker
