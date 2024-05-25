@@ -17,19 +17,20 @@
           color="on-primary-container"
           width="100%"
         >
-            <!DOCTYPE html>
-            <html
-              :class="storeThemeDark === false ? 'light' : 'dark'"
-              style="overflow-y: initial"
-              lang="fr"
-              xml:lang="fr"
+          <!DOCTYPE html>
+          <html
+            :class="storeThemeDark === false ? 'light' : 'dark'"
+            style="overflow-y: initial"
+            id="someselector"
+            lang="fr"
+            xml:lang="fr"
             >
-              <ContentDoc
-                :path="article._path"
-                unwrap="p"
-                style="width: 85vw;overflow-x: auto; white-space: nowrap"
-              />
-            </html>
+            <ContentDoc
+              class="someselector"
+              :path="article._path"
+              style="width: 85vw;overflow-x: auto; white-space: nowrap;padding: revert;margin: revert;"
+            />
+          </html>
         </v-sheet>
       </v-responsive>
     </v-container>
@@ -48,3 +49,10 @@ const { data: article } = await useAsyncData('home', () => queryContent()
   .only(['_path', 'title'])
   .findOne())
 </script>
+<style scoped>
+.someselector > * {
+  padding: revert;
+  margin: revert;
+}
+
+</style>

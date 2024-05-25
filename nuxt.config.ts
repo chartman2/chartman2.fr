@@ -74,7 +74,15 @@ export default defineNuxtConfig({
       langs: [
         'c',
         'cpp',
-        'ruby'
+        'ruby',
+        'shell',
+        'yaml',
+        'json', 
+        'js', 
+        'ts', 
+        'html', 
+        'css', 
+        'vue'
       ],
       // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
       theme: {
@@ -84,7 +92,7 @@ export default defineNuxtConfig({
     },
     markdown: {
       tags: {
-        code: 'code',
+        code: 'v-card',
       },
     },
   },

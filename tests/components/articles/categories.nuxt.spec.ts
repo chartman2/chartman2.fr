@@ -36,6 +36,14 @@ describe('Components - articles/categories', async () => {
         text: "Articles autour du langage Javascript.",
         link: "/blog/category/javascript",
       },
+      {
+        type: "icon",
+        src: 'i-mdi:checkbox-marked-circle-plus-outline',
+        color: "black",
+        title: "To-do list",
+        text: "Construction d'une To-do list.",
+        link: "/blog/category/to-do-list",
+      },
     ])
   })
 })
