@@ -15,3 +15,11 @@ tasks:
     desc: Arrêt des services Docker
     cmds:
       - docker compose down
+  logs:
+    desc: Logs des services
+    cmds:
+      - docker compose logs
+  f-restart:
+    desc: Redémarrage du service frontend
+    cmds:
+      - docker compose restart frontend

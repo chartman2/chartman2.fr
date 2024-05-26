@@ -72,11 +72,11 @@ const articles = reactive([
   },
   {
     type: "icon",
-    src: 'i-mdi:language-javascript',
+    src: 'i-mdi:nuxt',
     color: "green",
-    title: "Javascript",
-    text: "Articles autour du langage Javascript.",
-    link: "/blog/category/javascript",
+    title: "Nuxt",
+    text: "Articles autour du framework Nuxt.",
+    link: "/blog/category/nuxt",
   },
   {
     type: "icon",

@@ -2,19 +2,17 @@
 title: 'To-do list App'
 description: 'Initialisation'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
-article_id: '1-initialisation'
+article_id: '1-to-do-list-initialisation'
 ---
 
-Nous allons construire une application "To-do list" ([wikipedia](https://en.wikipedia.org/wiki/Wikipedia:To-do_list)) avec [Nuxt](https://nuxt.com/) et [RoR](https://rubyonrails.org/).
+Nous allons construire une application "To-do list" ([wikipedia](https://en.wikipedia.org/wiki/Wikipedia:To-do_list){:target="_blank"}) avec [Nuxt](https://nuxt.com/){:target="_blank"} et [RoR](https://rubyonrails.org/){:target="_blank"}.
 
-L'application sera divisée en deux, la partie *Frontend* avec le framework **Nuxt** (basé sur VueJS) 
-
-et la partie *backend* avec de framework **Ruby on Rails** 
+L'application sera divisée en deux, la partie *frontend* avec le framework **Nuxt** (basé sur VueJS) et la partie *backend* avec de framework **Ruby on Rails** 
 
 # Frontend 
 
 
-Nous allons commencer la partie frontend (interface utilisateur) avec **Nuxt**.
+Nous allons commencer la partie frontend (interface utilisateur) avec [**Nuxt**](/blog/article/1-nuxt-initialisation){:target="_blank"}.
 
 Pour cela, j'ai créé un dépôt afin de commencer avec une configuration déjà effectuée.
 
