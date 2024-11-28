@@ -11,7 +11,6 @@ function createFetchResponse(data) {
   return { json: () => Promise.resolve(data) }
 }
 
-
 describe('Components - partial/main/contact_me', async () => {
   it('is a Vue instance', async () => {
     const wrapper = await mountSuspended(TestResource, {

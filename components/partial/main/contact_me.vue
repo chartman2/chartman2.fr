@@ -97,7 +97,7 @@ const messageRules = [
 
 const sendEmail = async () => {
   if (valid.value === true) {
-    const result = await $fetch('/api/email', {
+    await $fetch('/api/email', {
       method: 'post',
       body: {
         name: name.value,
@@ -106,8 +106,6 @@ const sendEmail = async () => {
         message: message.value
       }
     })
-
-    console.log(result)
   }
 };
 </script>

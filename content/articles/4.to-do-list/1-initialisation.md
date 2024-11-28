@@ -53,6 +53,10 @@ cp .env.example .env
 
 * Installation de l'application
 
+Pour plus d'information sur [Docker](/blog/article/1-docker-description){:target="_blank"}
+et [Docker compose](/blog/article/2-docker-compose-description){:target="_blank"}
+
+
 ```shell
 docker compose build 
 ```
@@ -95,3 +99,4 @@ Ainsi que le fichier `pages/index.vue`
 </v-row>
 ```
 
+[deuxième partie](/blog/article/2-to-do-list-taches)
