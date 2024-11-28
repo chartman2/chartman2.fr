@@ -60,7 +60,7 @@
     </v-col>
   </v-row>
 </template>
-<script setup>
+<script setup lang="ts">
 const articles = reactive([
   {
     type: "icon",

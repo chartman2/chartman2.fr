@@ -19,7 +19,7 @@ export default defineVitestConfig({
     },
     globals: true,
     include: ['tests/**/*.spec.ts'],
-    exclude: ['api', '.nuxt', 'server', 'middleware', 'layouts', 'pages', 'tests', '*.config.ts', '*.d.ts', 'app.vue'],
+    exclude: ['api', '.nuxt', 'server', 'middleware', 'layouts', 'tests', '*.config.ts', '*.d.ts', 'app.vue'],
     coverage: {
         reporter: 'lcov',
         provider: 'v8',
