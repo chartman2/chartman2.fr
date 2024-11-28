@@ -12,6 +12,5 @@ export default defineEventHandler(async (event) => {
     "Message : " + body.message + "\n"
   })
 
-  console.log(result)
   return result
 })

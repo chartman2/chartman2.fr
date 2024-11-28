@@ -63,4 +63,14 @@ describe('Components - partial/main/contact_me', async () => {
     
     expect($fetch).toHaveBeenCalledTimes(1)
   })
+
+  it('correspond to snapshot', async () => {
+    const wrapper = await mountSuspended(TestResource, {
+      shallow: true
+    })
+
+    expect(wrapper.html()).toMatchInlineSnapshot(`
+      "<v-card-stub color="info-container" disabled="false" flat="false" hover="false" ripple="true" border="false" density="default" loading="false" tile="false" replace="false" exact="false" tag="div" variant="elevated"></v-card-stub>"
+    `)
+  })
 })

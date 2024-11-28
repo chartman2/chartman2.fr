@@ -7,10 +7,6 @@ export default defineVitestConfig({
   test: {
     environment: 'nuxt',
     mockReset: true,
-    // server: {
-    //     deps: { inline: ['vuetify'] },
-    // },
-
     environmentOptions: {
         nuxt: {
           domEnvironment: 'happy-dom',
@@ -22,10 +18,8 @@ export default defineVitestConfig({
         },
     },
     globals: true,
-    include: ['tests/**/*.nuxt.spec.ts'],
+    include: ['tests/**/*.spec.ts'],
     exclude: ['api', '.nuxt', 'server', 'middleware', 'layouts', 'pages', 'tests', '*.config.ts', '*.d.ts', 'app.vue'],
-    // setupFiles: ['tests/setup/init.ts'],
-    // unstubGlobals: true,
     coverage: {
         reporter: 'lcov',
         provider: 'v8',
