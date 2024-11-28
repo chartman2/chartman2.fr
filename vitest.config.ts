@@ -32,5 +32,5 @@ export default defineVitestConfig({
         include: ['components', 'composables', 'stores', 'pages', 'app'],
         all: true
     }
-  },
+  }
 })

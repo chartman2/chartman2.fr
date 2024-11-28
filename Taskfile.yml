@@ -18,7 +18,7 @@ tasks:
   logs:
     desc: Logs des services
     cmds:
-      - docker compose logs
+      - docker compose logs -f
   f-restart:
     desc: Redémarrage du service frontend
     cmds:

@@ -1,11 +1,10 @@
 FROM node:lts-alpine
 
-RUN npm install -g pnpm@9.0.6
-
 WORKDIR /app
 
 RUN apk --no-cache add git \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && npm install -g pnpm@${PNPM_VERSION}
 
 COPY . .
 

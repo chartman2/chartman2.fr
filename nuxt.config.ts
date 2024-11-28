@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  
   app: {
     head: {
       meta: [
@@ -25,6 +25,16 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
+  // devServer: {
+  //   // url: 'https://chartman2-fr.traefik.me',
+  //   // https: true,
+  //   host: 'https://chartman2-fr.traefik.me',
+  //   port: 3000,
+  //   // https: {
+  //   //   key: '/etc/ssl/traefik/privkey.pem',
+  //   //   cert: '/etc/ssl/traefik/cert.pem'
+  //   // }
+  // },
   site: {
     url: 'https://chartman2.fr',
     name: 'chartman2.fr',
@@ -46,7 +56,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     'nuxt3-aos',
     '@dargmuesli/nuxt-cookie-control',
-    'nuxt-resend'
+    'nuxt-resend',
+    '@nuxt/image',
   ],
   vuetify: {
     moduleOptions: {
@@ -115,5 +126,80 @@ export default defineNuxtConfig({
         bannerDescription: 'Nous utilisons des cookies d’origine. Ces cookies sont destinés à vous offrir une navigation optimisée sur ce site web. En poursuivant votre navigation, nous considérons que vous acceptez l’usage des cookies.'
       }
     }
-  }
+  },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true
+    }
+  },
+  vite: { // @see https://github.com/nuxt/nuxt/issues/27558
+    server: {
+      hmr: {
+        protocol: "wss",
+        clientPort: 443,
+        path: "hmr/",
+      },
+    },
+  },
+  hooks: { // @see https://github.com/nuxt/nuxt/issues/27558
+    'vite:extendConfig': (config) => {
+      if (typeof config.server.hmr === 'object') {
+        config.server.hmr.protocol = 'wss';
+        config.server.hmr.clientPort = 443;
+        config.server.hmr.path = "hmr/";
+      }
+    },
+  },
+  // hooks: {
+  //   'vite:extendConfig'(viteInlineConfig) {
+  //     viteInlineConfig.server = {
+  //       ...viteInlineConfig.server,
+  //     hmr: {
+  //       host: "chartman2-fr-wss.traefik.me",
+  //        protocol: 'wss',
+  //        clientPort: 443,
+  //        port: 24678,
+  //     }
+  //   }
+  // }
+  // },
+  // vite: {
+  //   server: {
+  //     hmr: {
+  //       protocol: 'wss'
+  //     },
+  //     // hmr: {
+  //     //   host: "chartman2-fr-wss.traefik.me",
+  //     //   protocol: 'wss',
+  //     //   clientPort: 443,
+  //     //   port: 24678,
+  //     //   // path: '/hmr/',
+  //     //   // timeout: 3,
+  //     // },
+  //     watch: {
+  //       usePolling: true,
+  //       interval: 100,
+  //     }
+  //   },
+  // },
+  // hooks: {
+  //   'vite:extendConfig'(viteInlineConfig) {
+  //     viteInlineConfig.server = {
+  //         ...viteInlineConfig.server,
+  //       hmr: {
+  //         host: 'chartman2-fr-wss.traefik.me',
+  //         protocol: 'wss',
+  //         clientPort: 443,
+  //         port: 24678,
+  //         // path: '/hmr/',
+  //       },
+  //       watch: {
+  //         usePolling: true,
+  //         interval: 100,
+  //       }
+  //     }
+  //   }
+  // }
 })
