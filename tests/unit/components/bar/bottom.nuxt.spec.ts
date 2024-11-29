@@ -7,17 +7,13 @@ import TestResource from '~~/components/bar/bottom.vue'
 
 describe('Components - bar/bottom', async () => {
   it('is a Vue instance', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
     expect(wrapper.vm).toBeTruthy()
   })
 
   it('has initialized values', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
     const dayjs = useDayjs()
 
     expect(wrapper.vm.currentYear.value).toEqual(dayjs().year())

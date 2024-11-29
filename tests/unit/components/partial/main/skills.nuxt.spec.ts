@@ -5,21 +5,17 @@ import { mountSuspended } from '@nuxt/test-utils/runtime'
 
 import TestResource from '~~/components/partial/main/skills.vue'
 
-describe('Components - partial/main/skills', async () => {
+describe('Components - partial/main/skills', () => {
   it('is a Vue instance', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
     expect(wrapper.vm).toBeTruthy()
   })
 
   it('has initialized values', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
-    expect(wrapper.vm.skills).toEqual([
+    expect(wrapper.vm.skills).toStrictEqual([
       {
         title: "Frontend",
         text: "Tous les éléments du site que l’on voit à l’écran et avec lesquels on peut interagir. Ces éléments sont composés de HTML, CSS et de Javascript contrôlés par le navigateur web de l’utilisateur.",

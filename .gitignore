@@ -24,4 +24,5 @@ logs
 !.env.example
 .pnpm-store
 
-coverage
+# Vitest coverage
+coverage/*

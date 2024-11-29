@@ -7,9 +7,7 @@ import TestResource from '~~/components/partial/main/legal_notices.vue'
 
 describe('Components - partial/legal_notices', async () => {
   it('is a Vue instance', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
     expect(wrapper.vm).toBeTruthy()
   })

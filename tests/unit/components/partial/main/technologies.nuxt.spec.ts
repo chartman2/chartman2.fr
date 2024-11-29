@@ -7,17 +7,13 @@ import TestResource from '~~/components/partial/main/technologies.vue'
 
 describe('Components - partial/main/technologies', async () => {
   it('is a Vue instance', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
     expect(wrapper.vm).toBeTruthy()
   })
 
   it('has initialized values', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
     expect(wrapper.vm.stats).toEqual([
       {

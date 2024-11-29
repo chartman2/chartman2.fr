@@ -7,9 +7,7 @@ import TestResource from '~~/components/partial/main/about_me.vue'
 
 describe('Components - partial/main/about_me', async () => {
   it('is a Vue instance', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
     expect(wrapper.vm).toBeTruthy()
   })
