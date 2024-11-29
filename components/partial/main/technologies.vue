@@ -46,8 +46,10 @@
 </template>
 
 <script setup>
-const { mobile } = useDisplay()
+import { CStats } from '~/utils/common'
 
+const { mobile } = useDisplay()
+const stats = reactive(CStats)
 const getStars = async (url, star_count) => {
   try {
     const response = await fetch(url)
@@ -59,45 +61,6 @@ const getStars = async (url, star_count) => {
     return star_count
   }
 }
-
-const stats = reactive([
-  {
-    value: '199k+',
-    title: 'VueJS',
-    url: 'https://github.com/vuejs/vue',
-    star_url: `https://api.github.com/repos/vuejs/vue`,
-  },
-  {
-    value: '41k+',
-    title: 'NuxtJS',
-    url: 'https://github.com/nuxt/nuxt.js/',
-    star_url: `https://api.github.com/repos/nuxt/nuxt.js`,
-  },
-  {
-    value: '19k+',
-    title: 'Ruby',
-    url: 'https://github.com/ruby/ruby',
-    star_url: `https://api.github.com/repos/ruby/ruby`,
-  },
-  {
-    value: '51k+',
-    title: 'Ruby on Rails',
-    url: 'https://github.com/rails/rails',
-    star_url: `https://api.github.com/repos/rails/rails`,
-  },
-  {
-    value: '72k+',
-    title: 'Laravel',
-    url: 'https://github.com/laravel/laravel',
-    star_url: `https://api.github.com/repos/laravel/laravel`,
-  },
-  {
-    value: '28k+',
-    title: 'Symfony',
-    url: 'https://github.com/symfony/symfony',
-    star_url: `https://api.github.com/repos/symfony/symfony`,
-  },
-])
 
 stats.forEach(async (stat) => {
   stat.value = await getStars(stat.star_url, stat.value)

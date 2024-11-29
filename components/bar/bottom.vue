@@ -65,40 +65,15 @@
 </template>
 
 <script setup lang="ts">
+import { CSocial, CLinks } from '~/utils/common'
+
 const { mobile } = useDisplay()
 const dayjs = useDayjs()
 
 const currentYear = ref(dayjs().year())
 const currentRangeYears = ref(currentYear.value === 2022 ? '2022' : `2022-${currentYear.value}`)
 
-const social = reactive([
-  {
-    name: 'Facebook',
-    route: 'https://www.facebook.com/christophe.hartmann1/',
-    icon: 'i-mdi:facebook',
-  },
-  {
-    name: 'Linkedin',
-    route: 'https://www.linkedin.com/in/christophe-hartmann-3a297a42/',
-    icon: 'i-mdi:linkedin',
-  },
-])
+const social = reactive(CSocial)
 
-const links = reactive([
-  {
-    name: 'NuxtJS',
-    icon: 'i-mdi:nuxt',
-    href: 'https://nuxt.com/',
-  },
-  {
-    name: 'Vuetify',
-    icon: 'i-mdi:vuetify',
-    href: 'https://vuetifyjs.com/en/',
-  },
-  {
-    name: 'RoR',
-    icon: 'i-mdi:language-ruby-on-rails',
-    href: 'https://rubyonrails.org/',
-  },
-])
+const links = reactive(CLinks)
 </script>
