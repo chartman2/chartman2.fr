@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.72% </span>
+                <span class="strong">21.53% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>15/66</span>
+                <span class='fraction'>14/65</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.72% </span>
+                <span class="strong">21.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>15/66</span>
+                <span class='fraction'>14/65</span>
             </div>
         
             
@@ -108,11 +108,12 @@
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
 <a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -134,10 +135,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -145,6 +142,10 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -153,7 +154,8 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;v-snackbar
     v-model="snackbar"
     :color="category"
@@ -166,46 +168,47 @@
     &lt;template #actions&gt;
 <span class="cstat-no" title="statement not covered" >      &lt;v-btn</span>
 <span class="cstat-no" title="statement not covered" >        density="compact"</span>
-<span class="cstat-no" title="statement not covered" >        icon="i-mdi:close-circ</span>le"
+<span class="cstat-no" title="statement not covered" >        icon="i-mdi:close-ci</span>rcle"
 <span class="cstat-no" title="statement not covered" >        @click="handleCloseClick"</span>
 <span class="cstat-no" title="statement not covered" >      /&gt;</span>
-<span class="cstat-no" title="statement not covered" >    &lt;</span>/template&gt;
+<span class="cstat-no" title="statement not covered" ></span>    &lt;/template&gt;
 <span class="cstat-no" title="statement not covered" >  &lt;/v-snackbar&gt;</span>
 <span class="cstat-no" title="statement not covered" >&lt;/template&gt;</span>
-<span class="cstat-no" title="statement not covered" >&lt;script setup&gt;</span>
-<span class="cstat-no" title="statement not covered" >  import { useApplicationStore</span> } from '~/stores/application'
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >  const { t } = useI18n()</span>
-<span class="cstat-no" title="statement not covered" >  const applicationS</span>tore = useApplicationStore()
-<span class="cstat-no" title="statement not covered" >  const snackbar = computed({</span>
-<span class="cstat-no" title="statement not covered" >    get: () =&gt; appl</span>icationStore.getShow,
-<span class="cstat-no" title="statement not covered" >    set: (show) =&gt; applicationStore</span>.setShow(show),
-<span class="cstat-no" title="statement not covered" >  })</span>
-<span class="cstat-no" title="statement not covered" >  con</span>st message = computed(() =&gt; t(applicationStore.getMessage))
-  const category = computed(() =&gt; applicationStore.getCategory)
-<span class="cstat-no" title="statement not covered" >  const icon = computed(() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    switch (category.value) {</span>
-<span class="cstat-no" title="statement not covered" ></span>      case 'success':
-        return 'i-mdi:check-circle'
-<span class="cstat-no" title="statement not covered" >      case 'error':</span>
-<span class="cstat-no" title="statement not covered" >        return 'i-mdi:alert-circle'</span>
-<span class="cstat-no" title="statement not covered" >      case 'info':</span>
-<span class="cstat-no" title="statement not covered" ></span>        return 'i-mdi:information'
-    }
-  })
+<span class="cstat-no" title="statement not covered" >&lt;script setup&gt;</span>
+<span class="cstat-no" title="statement not covered" >import { useApplicat</span>ionStore } from '~/stores/application'
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const { t } = useI</span>18n()
+<span class="cstat-no" title="statement not covered" >const applicationStore = useApplic</span>ationStore()
+<span class="cstat-no" title="statement not covered" >const snackbar = </span>computed({
+<span class="cstat-no" title="statement not covered" >  get: () =&gt; applicationStore.get</span>Show,
+<span class="cstat-no" title="statement not covered" >  se</span>t: show =&gt; applicationStore.setShow(show),
+<span class="cstat-no" title="statement not covered" >})</span>
+const message = computed(() =&gt; t(applicationStore.getMessage))
+<span class="cstat-no" title="statement not covered" >const category = computed(() =&gt; a</span>pplicationStore.getCategory)
+<span class="cstat-no" title="statement not covered" >const icon = computed(() =&gt; {</span>
+<span class="cstat-no" title="statement not covered" ></span>  switch (category.value) {
+    case 'success':
+<span class="cstat-no" title="statement not covered" >      return 'i-mdi:check-circle'</span>
+<span class="cstat-no" title="statement not covered" >    case 'error':</span>
+<span class="cstat-no" title="statement not covered" >      return 'i-mdi:</span>alert-circle'
+<span class="cstat-no" title="statement not covered" ></span>    case 'info':
+      return 'i-mdi:information'
+  }
+})
 &nbsp;
-  const handleCloseClick = () =&gt; {
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >    applicationStore.setShow(false)</span></span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >const handleCloseClick = () =&gt; {</span></span>
+<span class="cstat-no" title="statement not covered" >  applicationStore.setShow(false)</span>
+<span class="cstat-no" title="statement not covered" >}</span>
 <span class="cstat-no" title="statement not covered" >&lt;/script&gt;</span>
-<span class="cstat-no" title="statement not covered" ></span></pre></td></tr></table></pre>
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-29T11:31:02.625Z
+                at 2024-11-29T12:19:21.594Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

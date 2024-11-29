@@ -1,10 +1,13 @@
 <template>
-  <v-toolbar flat color="info-container">
+  <v-toolbar
+    flat
+    color="info-container"
+  >
     <v-btn
-      @click="$router.back()"
       variant="tonal"
       color="info"
       class="mr-2"
+      @click="$router.back()"
     >
       <v-icon icon="i-mdi:arrow-left-circle" />
     </v-btn>
@@ -16,7 +19,7 @@
       <v-icon icon="i-mdi-home" />
     </v-btn>
 
-    <v-spacer></v-spacer>
+    <v-spacer />
 
     <v-btn
       v-if="route.name != 'articles'"
@@ -28,6 +31,7 @@
     </v-btn>
   </v-toolbar>
 </template>
+
 <script setup>
 const route = useRoute()
 </script>

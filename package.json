@@ -9,7 +9,9 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test:dev": "vitest run --coverage",
-    "test:ci-cd": "vitest run -c ./vitest.ci-cd.config.mjs --coverage"
+    "test:ci-cd": "vitest run -c ./vitest.ci-cd.config.mjs --coverage",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@iconify-json/mdi": "^1.2.1",

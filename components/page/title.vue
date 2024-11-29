@@ -16,19 +16,20 @@
     </v-col>
   </v-row>
 </template>
-<script setup>
-  const props = defineProps({
-    title: {
-      type: String,
-      default: '',
-    },
-    icon: {
-      type: String,
-      default: 'i-mdi:alpha-xcircle-outline',
-    },
-  })
 
-  const icon = computed(() => {
-    return props.icon
-  })
+<script setup>
+const props = defineProps({
+  title: {
+    type: String,
+    default: '',
+  },
+  icon: {
+    type: String,
+    default: 'i-mdi:alpha-xcircle-outline',
+  },
+})
+
+const icon = computed(() => {
+  return props.icon
+})
 </script>

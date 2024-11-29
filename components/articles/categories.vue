@@ -1,9 +1,9 @@
 <template>
   <v-row class="d-flex justify-space-around">
     <v-col
-      v-aos="['animate__fadeIn']"
       v-for="({ type, src, color, text, title, link }, i) in articles"
       :key="i"
+      v-aos="['animate__fadeIn']"
       cols="12"
       md="4"
     >
@@ -60,31 +60,32 @@
     </v-col>
   </v-row>
 </template>
+
 <script setup lang="ts">
 const articles = reactive([
   {
-    type: "icon",
+    type: 'icon',
     src: 'i-mdi:language-ruby',
-    color: "red",
-    title: "Ruby",
-    text: "Articles autour du langage Ruby.",
-    link: "/blog/category/ruby",
+    color: 'red',
+    title: 'Ruby',
+    text: 'Articles autour du langage Ruby.',
+    link: '/blog/category/ruby',
   },
   {
-    type: "icon",
+    type: 'icon',
     src: 'i-mdi:nuxt',
-    color: "green",
-    title: "Nuxt",
-    text: "Articles autour du framework Nuxt.",
-    link: "/blog/category/nuxt",
+    color: 'green',
+    title: 'Nuxt',
+    text: 'Articles autour du framework Nuxt.',
+    link: '/blog/category/nuxt',
   },
   {
-    type: "icon",
+    type: 'icon',
     src: 'i-mdi:checkbox-marked-circle-plus-outline',
-    color: "black",
-    title: "To-do list",
-    text: "Construction d'une To-do list.",
-    link: "/blog/category/to-do-list",
+    color: 'black',
+    title: 'To-do list',
+    text: 'Construction d\'une To-do list.',
+    link: '/blog/category/to-do-list',
   },
 ])
 </script>

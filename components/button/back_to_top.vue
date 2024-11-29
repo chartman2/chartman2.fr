@@ -39,8 +39,8 @@ tryOnUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 </script>
-<style>
 
+<style>
 .mb-24 {
     margin-bottom: 96px !important;
 }

@@ -1,5 +1,8 @@
 <template>
-  <div v-if="isDev" style="padding: revert;margin: revert;">
+  <div
+    v-if="isDev"
+    style="padding: revert;margin: revert;"
+  >
     Rendering the <code>script</code> element is dangerous and is disabled by default. Consider implementing your own <code>ProseScript</code> element to have control over script rendering.
   </div>
 </template>
@@ -8,8 +11,8 @@
 defineProps({
   src: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 const isDev = import.meta.dev
 </script>

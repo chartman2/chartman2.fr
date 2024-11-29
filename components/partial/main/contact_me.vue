@@ -53,7 +53,7 @@
           </v-row>
           <v-row>
             <v-col
-              class="mx-auto py-4" 
+              class="mx-auto py-4"
               cols="12"
             >
               <v-btn
@@ -71,29 +71,30 @@
     </v-container>
   </v-card>
 </template>
+
 <script setup>
 const valid = ref(false)
 const name = ref('')
-const email = ref("")
-const subject = ref("")
-const message = ref("")
+const email = ref('')
+const subject = ref('')
+const message = ref('')
 
 const nameRules = [
-  (v) => !!v || "Votre nom est requis",
-  (v) => v.length <= 30 || "Votre nom doit faire moins de 30 caractères",
-];
+  v => !!v || 'Votre nom est requis',
+  v => v.length <= 30 || 'Votre nom doit faire moins de 30 caractères',
+]
 const emailRules = [
-  (v) => !!v || "Votre courriel (e-mail) est requis",
-  (v) => /.+@.+\..+/.test(v) || "Votre courriel (e-mail) doit être valide",
-];
+  v => !!v || 'Votre courriel (e-mail) est requis',
+  v => /.+@.+\..+/.test(v) || 'Votre courriel (e-mail) doit être valide',
+]
 const subjectRules = [
-  (v) => !!v || "Le sujet est requis",
-  (v) => v.length >= 5 || "Le sujet doit faire au moins de 5 caractères",
-];
+  v => !!v || 'Le sujet est requis',
+  v => v.length >= 5 || 'Le sujet doit faire au moins de 5 caractères',
+]
 const messageRules = [
-  (v) => !!v || "Le message est requis",
-  (v) => v.length >= 15 || "Le message doit faire au moins de 15 caractères",
-];
+  v => !!v || 'Le message est requis',
+  v => v.length >= 15 || 'Le message doit faire au moins de 15 caractères',
+]
 
 const sendEmail = async () => {
   if (valid.value === true) {
@@ -103,9 +104,9 @@ const sendEmail = async () => {
         name: name.value,
         email: email.value,
         subject: subject.value,
-        message: message.value
-      }
+        message: message.value,
+      },
     })
   }
-};
+}
 </script>

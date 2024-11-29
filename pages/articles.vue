@@ -1,6 +1,6 @@
 <template>
   <v-row class="d-flex align-self-start py-12">
-    <v-container >
+    <v-container>
       <button-article />
 
       <page-title
@@ -9,9 +9,10 @@
         icon="i-mdi:book-open-variant-outline"
       />
 
-        <articles-categories class="py-12" />
+      <articles-categories class="py-12" />
     </v-container>
   </v-row>
 </template>
+
 <script setup>
 </script>

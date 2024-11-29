@@ -29,7 +29,7 @@
               >
                 Bienvenu sur
               </span>
-  
+
               <span
                 :class="[mobile ? 'display-3' : 'display-4']"
                 class="font-weight-black"
@@ -37,7 +37,7 @@
                 chartman2.fr
               </span>
             </v-col>
-  
+
             <v-btn
               class="align-self-end"
               fab

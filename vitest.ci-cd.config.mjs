@@ -8,14 +8,14 @@ export default defineVitestConfig({
     environment: 'nuxt',
     mockReset: true,
     environmentOptions: {
-        nuxt: {
-          domEnvironment: 'happy-dom',
-          
-          mock: {
-            intersectionObserver: true,
-            indexedDb: true,
-          },
+      nuxt: {
+        domEnvironment: 'happy-dom',
+
+        mock: {
+          intersectionObserver: true,
+          indexedDb: true,
         },
+      },
     },
     globals: true,
     include: ['tests/**/*.nuxt.spec.ts'],
@@ -23,10 +23,10 @@ export default defineVitestConfig({
     reporters: ['vitest-sonar-reporter'],
     outputFile: 'sonar-report.xml',
     coverage: {
-        reporter: 'lcov',
-        provider: 'v8',
-        include: ['components', 'composables', 'stores', 'pages', 'app'],
-        all: true
-    }
+      reporter: 'lcov',
+      provider: 'v8',
+      include: ['components', 'composables', 'stores', 'pages', 'app'],
+      all: true,
+    },
   },
 })

@@ -9,12 +9,11 @@
         icon="i-mdi:scale-balance"
       />
 
-      
-
       <partial-main-legal-notices />
     </v-container>
   </v-row>
 </template>
+
 <script setup>
 useHead({
   charset: 'UTF-8',

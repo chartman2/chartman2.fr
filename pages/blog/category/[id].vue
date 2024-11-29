@@ -1,7 +1,6 @@
 <template>
   <v-row class="d-flex align-self-start py-12">
     <v-container>
-      
       <button-article />
 
       <page-title
@@ -12,7 +11,7 @@
 
       <v-row class="d-flex justify-space-around">
         <v-col
-          v-for="({title, description, icon, color, article_id}, i) in articles"
+          v-for="({ title, description, icon, color, article_id }, i) in articles"
           :key="i"
           cols="12"
           md="4"
@@ -70,10 +69,10 @@ const route = useRoute()
 const { data: articles } = await useAsyncData('home', () => queryContent()
   .where({
     _path: {
-      $contains: '/articles/' + route.params.id
-    }
+      $contains: '/articles/' + route.params.id,
+    },
   })
   .only(['_path', '_id', 'title', 'icon', 'description', 'color', 'article_id'])
-  .find()
+  .find(),
 )
 </script>

@@ -237,7 +237,8 @@
 <a name='L172'></a><a href='#L172'>172</a>
 <a name='L173'></a><a href='#L173'>173</a>
 <a name='L174'></a><a href='#L174'>174</a>
-<a name='L175'></a><a href='#L175'>175</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L175'></a><a href='#L175'>175</a>
+<a name='L176'></a><a href='#L176'>176</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -365,6 +366,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -427,7 +429,7 @@
         &lt;h3 class="font-weight-bold mb-3 align-justify"&gt;
           {{ title }}
         &lt;/h3&gt;
-        
+&nbsp;
         &lt;span class="subtitle-1"&gt;
           {{ text }}
         &lt;/span&gt;
@@ -486,113 +488,114 @@
           width="112"
         &gt;
           &lt;v-divider class="mt-4" /&gt;
-&nbsp;
         &lt;/v-responsive&gt;
       &lt;/section&gt;
     &lt;/v-container&gt;
   &lt;/v-card&gt;
 &lt;/template&gt;
+&nbsp;
 &lt;script setup&gt;
 const skills = reactive([
   {
-    title: "Frontend",
-    text: "Tous les éléments du site que l’on voit à l’écran et avec lesquels on peut interagir. Ces éléments sont composés de HTML, CSS et de Javascript contrôlés par le navigateur web de l’utilisateur.",
+    title: 'Frontend',
+    text: 'Tous les éléments du site que l’on voit à l’écran et avec lesquels on peut interagir. Ces éléments sont composés de HTML, CSS et de Javascript contrôlés par le navigateur web de l’utilisateur.',
     skill: [
       {
-        type: "icon",
+        type: 'icon',
         src: 'i-mdi:vuejs',
-        title: "VueJS",
-        text: "Progressive JavaScript framework",
+        title: 'VueJS',
+        text: 'Progressive JavaScript framework',
       },
       {
-        type: "icon",
+        type: 'icon',
         src: 'i-mdi:nuxt',
-        title: "NuxtJS",
-        text: "Frontend framework",
+        title: 'NuxtJS',
+        text: 'Frontend framework',
       },
       {
-        type: "icon",
+        type: 'icon',
         src: 'i-mdi:vuetify',
-        title: "Vuetify",
-        text: "Material design framework",
+        title: 'Vuetify',
+        text: 'Material design framework',
       },
     ],
   },
   {
-    title: "Backend",
-    text: "C'est la partie invisible pour les visiteurs mais qui donne vie au site. Le backend conserve toutes les données du webmaster et de ses clients, un peu comme un grand tableau. les langages comme PHP, Ruby, Python, SQL etc...",
+    title: 'Backend',
+    text: 'C\'est la partie invisible pour les visiteurs mais qui donne vie au site. Le backend conserve toutes les données du webmaster et de ses clients, un peu comme un grand tableau. les langages comme PHP, Ruby, Python, SQL etc...',
     skill: [
       {
-        type: "icon",
+        type: 'icon',
         src: 'i-mdi:language-ruby',
-        title: "Ruby",
-        text: "Dynamic language",
+        title: 'Ruby',
+        text: 'Dynamic language',
       },
       {
-        type: "icon",
+        type: 'icon',
         src: 'i-mdi:language-ruby-on-rails',
-        title: "Ruby on Rails",
-        text: "Web framework",
+        title: 'Ruby on Rails',
+        text: 'Web framework',
       },
       {
-        type: "icon",
+        type: 'icon',
         src: 'i-mdi:laravel',
-        title: "Laravel",
-        text: "Web framework",
+        title: 'Laravel',
+        text: 'Web framework',
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        type: "icon",</span>
+<span class="cstat-no" title="statement not covered" >        type: 'icon',</span>
 <span class="cstat-no" title="statement not covered" >        src</span>: 'i-mdi:symfony',
-<span class="cstat-no" title="statement not covered" >        title: "Symfony",</span>
-<span class="cstat-no" title="statement not covered" >        text: "Web framework",</span>
+<span class="cstat-no" title="statement not covered" >        title: 'Symfony',</span>
+<span class="cstat-no" title="statement not covered" >        text: 'Web framework',</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        type: "icon",</span>
+<span class="cstat-no" title="statement not covered" >        type: 'icon',</span>
 <span class="cstat-no" title="statement not covered" >        src: 'i-mdi:database</span>',
-<span class="cstat-no" title="statement not covered" >        title: "D</span>atabase design",
-<span class="cstat-no" title="statement not covered" >        text: "MySQL / PostgreSQL",</span>
+<span class="cstat-no" title="statement not covered" >        title: 'D</span>atabase design',
+<span class="cstat-no" title="statement not covered" >        text: 'MySQL / PostgreSQL',</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >    ],</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 <span class="cstat-no" title="statement not covered" >  {</span>
-<span class="cstat-no" title="statement not covered" >    title: "CI/CD",</span>
-<span class="cstat-no" title="statement not covered" >    text: "L'intégration continue (</span>CI) est un ensemble de pratiques utilisées en génie logiciel consistant à vérifier à chaque modification de code source que le résultat des modifications ne produit pas de régression dans l'application développée. Le déploiement continu ou Continuous deployment (CD) en anglais, est une approche d'ingénierie logicielle dans laquelle les fonctionnalités logicielles sont livrées fréquemment par le biais de déploiements automatisés.",
+<span class="cstat-no" title="statement not covered" >    title: 'CI/CD',</span>
+<span class="cstat-no" title="statement not covered" >    text: 'L\'intégration continue </span>(CI) est un ensemble de pratiques utilisées en génie logiciel consistant à vérifier à chaque modification de code source que le résultat des modifications ne produit pas de régression dans l\'application développée. Le déploiement continu ou Continuous deployment (CD) en anglais, est une approche d\'ingénierie logicielle dans laquelle les fonctionnalités logicielles sont livrées fréquemment par le biais de déploiements automatisés.',
 <span class="cstat-no" title="statement not covered" >    skill: [</span>
 <span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        type: "image",</span>
-<span class="cstat-no" title="statement not covered" >        src: "/img/gitea.png",</span>
-<span class="cstat-no" title="statement not covered" >        title: "Gitea",</span>
-<span class="cstat-no" title="statement not covered" >        text: "Code hosting",</span>
+<span class="cstat-no" title="statement not covered" >        type: 'image',</span>
+<span class="cstat-no" title="statement not covered" >        src: '/img/gitea.png',</span>
+<span class="cstat-no" title="statement not covered" >        title: 'Gitea',</span>
+<span class="cstat-no" title="statement not covered" >        text: 'Code hosting',</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        type: "image",</span>
-<span class="cstat-no" title="statement not covered" >        src: "/img/jenkins.png",</span>
-<span class="cstat-no" title="statement not covered" >        title: "Jenkins",</span>
-<span class="cstat-no" title="statement not covered" >        text: "Automation",</span>
+<span class="cstat-no" title="statement not covered" >        type: 'image',</span>
+<span class="cstat-no" title="statement not covered" >        src: '/img/jenkins.png',</span>
+<span class="cstat-no" title="statement not covered" >        title: 'Jenkins',</span>
+<span class="cstat-no" title="statement not covered" >        text: 'Automation',</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        type: "image",</span>
-<span class="cstat-no" title="statement not covered" >        src: "/img/sonarqube.png",</span>
-<span class="cstat-no" title="statement not covered" >        title: "SonarQube",</span>
-<span class="cstat-no" title="statement not covered" >        text: "Code quality and security",</span>
+<span class="cstat-no" title="statement not covered" >        type: 'image',</span>
+<span class="cstat-no" title="statement not covered" >        src: '/img/sonarqube.png',</span>
+<span class="cstat-no" title="statement not covered" >        title: 'SonarQube',</span>
+<span class="cstat-no" title="statement not covered" >        text: 'Code quality and security',</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >      {</span>
-<span class="cstat-no" title="statement not covered" >        type: "image",</span>
-<span class="cstat-no" title="statement not covered" >        src: "/img/openproject.jpg",</span>
-<span class="cstat-no" title="statement not covered" >        title: "Openproject",</span>
-<span class="cstat-no" title="statement not covered" >        text: "Project managment",</span>
+<span class="cstat-no" title="statement not covered" >        type: 'image',</span>
+<span class="cstat-no" title="statement not covered" >        src: '/img/openproject.jpg',</span>
+<span class="cstat-no" title="statement not covered" >        title: 'Openproject',</span>
+<span class="cstat-no" title="statement not covered" >        text: 'Project managment',</span>
 <span class="cstat-no" title="statement not covered" >      },</span>
 <span class="cstat-no" title="statement not covered" >    ],</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 <span class="cstat-no" title="statement not covered" >])</span>
-<span class="cstat-no" title="statement not covered" >&lt;/script&gt;</span></pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >&lt;/script&gt;</span>
+<span class="cstat-no" title="statement not covered" ></span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-29T11:31:02.625Z
+                at 2024-11-29T12:19:21.594Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -277,7 +277,6 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;template&gt;
   &lt;ClientOnly&gt;
-&nbsp;
     &lt;v-footer
       app
       min-height="72"
@@ -288,8 +287,8 @@
           &lt;v-col
             cols="4"
             class="d-flex flex-wrap justify-start"
-          &gt;<span class="branch-0 cbranch-no" title="branch not covered" ></span>
-            &lt;v-btn-group
+          &gt;
+            &lt;v-btn-group<span class="branch-0 cbranch-no" title="branch not covered" ></span>
               v-for="(s, i) in social"
               :key="i"
             &gt;
@@ -335,12 +334,12 @@
                   size="large"
                   :icon="s.icon"
                 /&gt;
-<span class="cstat-no" title="statement not covered" >              &lt;/v-btn&gt;</span>
-<span class="cstat-no" title="statement not covered" >            &lt;/v-b</span>tn-group&gt;
-<span class="cstat-no" title="statement not covered" >          &lt;/v-col&gt;</span>
+              &lt;/v-btn&gt;
+<span class="cstat-no" title="statement not covered" >            &lt;/v-btn-group&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/v-col</span>&gt;
 <span class="cstat-no" title="statement not covered" >        &lt;/v-row&gt;</span>
-<span class="cstat-no" title="statement not covered" >      &lt;/v-c</span>ontainer&gt;
-<span class="cstat-no" title="statement not covered" >    &lt;/v-footer&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/v-container&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/v-foo</span>ter&gt;
 <span class="cstat-no" title="statement not covered" >  &lt;/ClientOnly&gt;</span>
 <span class="cstat-no" title="statement not covered" >&lt;/template&gt;</span>
 <span class="cstat-no" title="statement not covered" ></span>
@@ -348,18 +347,18 @@
 <span class="cstat-no" title="statement not covered" >const { mobile } = useDisplay()</span>
 <span class="cstat-no" title="statement not covered" >const dayjs = useDayjs()</span>
 <span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >const currentYear = ref</span>(dayjs().year())
-<span class="cstat-no" title="statement not covered" >const currentRangeYears = ref(currentYear.valu</span>e === 2022 ? "2022" : `2022-${currentYear.value}`)
+<span class="cstat-no" title="statement not covered" >const currentYear = ref(dayjs().year())</span>
+<span class="cstat-no" title="statement not covered" >const currentRangeYears</span> = ref(currentYear.value === 2022 ? '2022' : `2022-${currentYear.value}`)
 <span class="cstat-no" title="statement not covered" ></span>
 <span class="cstat-no" title="statement not covered" >const social = reactive([</span>
 <span class="cstat-no" title="statement not covered" >  {</span>
-<span class="cstat-no" title="statement not covered" >    name: "Facebook",</span>
-<span class="cstat-no" title="statement not covered" >    route: "https://www.facebook.com/christophe.hartmann1/",</span>
+<span class="cstat-no" title="statement not covered" >    name: 'Facebook',</span>
+<span class="cstat-no" title="statement not covered" >    route: 'https://www.facebook.com/christophe.hartmann1/',</span>
 <span class="cstat-no" title="statement not covered" >    icon: 'i-mdi:facebook',</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 <span class="cstat-no" title="statement not covered" >  {</span>
-<span class="cstat-no" title="statement not covered" >    name: "Linkedin",</span>
-<span class="cstat-no" title="statement not covered" >    route: "https://www.linkedin.com/in/christophe-hartmann-3a297</span>a42/",
+<span class="cstat-no" title="statement not covered" >    name: 'Linkedin',</span>
+<span class="cstat-no" title="statement not covered" >    route: 'https://www.linkedin.com/in/christophe-hartm</span>ann-3a297a42/',
 <span class="cstat-no" title="statement not covered" >    icon: 'i-mdi:linkedin',</span>
 <span class="cstat-no" title="statement not covered" >  },</span>
 <span class="cstat-no" title="statement not covered" >])</span>
@@ -377,18 +376,19 @@
 <span class="cstat-no" title="statement not covered" >  },</span>
 <span class="cstat-no" title="statement not covered" >  {</span>
 <span class="cstat-no" title="statement not covered" >    name: 'RoR',</span>
-<span class="cstat-no" title="statement not covered" >    icon: 'i-mdi:language-ruby-on-r</span>ails',
-<span class="cstat-no" title="statement not covered" >    href: 'https://rubyonrails.org/',</span>
+<span class="cstat-no" title="statement not covered" >    icon: 'i-mdi:language-ruby-on-</span>rails',
+<span class="cstat-no" title="statement not covered" >    href: 'https://rubyonrails.org/</span>',
 <span class="cstat-no" title="statement not covered" >  },</span>
 <span class="cstat-no" title="statement not covered" >])</span>
-<span class="cstat-no" title="statement not covered" >&lt;/script&gt;</span></pre></td></tr></table></pre>
+<span class="cstat-no" title="statement not covered" >&lt;/script&gt;</span>
+<span class="cstat-no" title="statement not covered" ></span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-29T11:31:02.625Z
+                at 2024-11-29T12:19:21.594Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

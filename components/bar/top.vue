@@ -16,7 +16,7 @@
     <v-app-bar-title>
       {{ $t('global.name') }}
     </v-app-bar-title>
-    
+
     <template #append>
       <v-btn
         icon="i-mdi:theme-light-dark"
@@ -60,6 +60,7 @@
     </template>
   </v-app-bar>
 </template>
+
 <script setup>
 import { useApplicationStore } from '~/stores/application'
 
@@ -71,7 +72,7 @@ const menuItems = reactive([
     name: 'legal_notices.title',
     icon: 'i-mdi:scale-balance',
     to: '/legal_notices',
-  }
+  },
 ])
 
 const toggleTheme = () => {
@@ -81,5 +82,4 @@ const toggleTheme = () => {
 const backToHomePage = () => {
   router.push({ path: '/' })
 }
-
 </script>
