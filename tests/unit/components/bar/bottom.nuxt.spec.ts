@@ -5,15 +5,19 @@ import { mountSuspended } from '@nuxt/test-utils/runtime'
 
 import TestResource from '~~/components/bar/bottom.vue'
 
-describe('Components - bar/bottom', async () => {
+describe('Components - bar/bottom', () => {
   it('is a Vue instance', async () => {
-    const wrapper = await mountSuspended(TestResource)
+    const wrapper = await mountSuspended(TestResource, {
+      shallow: true
+    })
 
     expect(wrapper.vm).toBeTruthy()
   })
 
   it('has initialized values', async () => {
-    const wrapper = await mountSuspended(TestResource)
+    const wrapper = await mountSuspended(TestResource, {
+      shallow: true
+    })
     const dayjs = useDayjs()
 
     expect(wrapper.vm.currentYear.value).toEqual(dayjs().year())
