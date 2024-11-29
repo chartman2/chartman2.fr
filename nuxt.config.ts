@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  
   app: {
     head: {
       meta: [
@@ -25,16 +24,6 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
-  // devServer: {
-  //   // url: 'https://chartman2-fr.traefik.me',
-  //   // https: true,
-  //   host: 'https://chartman2-fr.traefik.me',
-  //   port: 3000,
-  //   // https: {
-  //   //   key: '/etc/ssl/traefik/privkey.pem',
-  //   //   cert: '/etc/ssl/traefik/cert.pem'
-  //   // }
-  // },
   site: {
     url: 'https://chartman2.fr',
     name: 'chartman2.fr',
@@ -46,7 +35,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'dayjs-nuxt',
     '@pinia/nuxt',
-    '@pinia-plugin-persistedstate/nuxt',
+    'pinia-plugin-persistedstate/nuxt',
     '@unocss/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/seo',
@@ -66,8 +55,12 @@ export default defineNuxtConfig({
     vuetifyOptions: './vuetify.config.ts'
   },
   i18n: {
+    locales: ['fr', 'en'],
+    defaultLocale: 'fr',
+    defaultLocaleRouteNameSuffix: "false",
     vueI18n: './i18n.config.ts' // if you are using custom path, default
   },
+  ssr: true,
   dayjs: {
     locales: ['fr', 'en'],
     plugins: ['relativeTime', 'utc', 'timezone'],
@@ -145,61 +138,11 @@ export default defineNuxtConfig({
   },
   hooks: { // @see https://github.com/nuxt/nuxt/issues/27558
     'vite:extendConfig': (config) => {
-      if (typeof config.server.hmr === 'object') {
+      if (typeof config.server === 'object' && typeof config.server.hmr === 'object') {
         config.server.hmr.protocol = 'wss';
         config.server.hmr.clientPort = 443;
         config.server.hmr.path = "hmr/";
       }
     },
-  },
-  // hooks: {
-  //   'vite:extendConfig'(viteInlineConfig) {
-  //     viteInlineConfig.server = {
-  //       ...viteInlineConfig.server,
-  //     hmr: {
-  //       host: "chartman2-fr-wss.traefik.me",
-  //        protocol: 'wss',
-  //        clientPort: 443,
-  //        port: 24678,
-  //     }
-  //   }
-  // }
-  // },
-  // vite: {
-  //   server: {
-  //     hmr: {
-  //       protocol: 'wss'
-  //     },
-  //     // hmr: {
-  //     //   host: "chartman2-fr-wss.traefik.me",
-  //     //   protocol: 'wss',
-  //     //   clientPort: 443,
-  //     //   port: 24678,
-  //     //   // path: '/hmr/',
-  //     //   // timeout: 3,
-  //     // },
-  //     watch: {
-  //       usePolling: true,
-  //       interval: 100,
-  //     }
-  //   },
-  // },
-  // hooks: {
-  //   'vite:extendConfig'(viteInlineConfig) {
-  //     viteInlineConfig.server = {
-  //         ...viteInlineConfig.server,
-  //       hmr: {
-  //         host: 'chartman2-fr-wss.traefik.me',
-  //         protocol: 'wss',
-  //         clientPort: 443,
-  //         port: 24678,
-  //         // path: '/hmr/',
-  //       },
-  //       watch: {
-  //         usePolling: true,
-  //         interval: 100,
-  //       }
-  //     }
-  //   }
-  // }
+  }
 })

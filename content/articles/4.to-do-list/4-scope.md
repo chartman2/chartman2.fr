@@ -127,7 +127,7 @@ const addTask = () => {
 
 *components/partial/todo/list.vue*
 
-```ts
+```vue
 <template>
   <v-row>
     <v-radio-group

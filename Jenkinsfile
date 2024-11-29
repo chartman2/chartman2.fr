@@ -114,10 +114,6 @@ pipeline {
                                     then
                                         sudo rm ../.ssh/id_ed25519.pub
                                     fi
-                                    if [ -f ~/.ssh/id_ed25519.pub ]
-                                    then
-                                        sudo rm ~/.ssh/id_ed25519.pub
-                                    fi
                                     pnpm add dotenv --save
                                     if git remote | grep github > /dev/null; then
                                         git remote rm github

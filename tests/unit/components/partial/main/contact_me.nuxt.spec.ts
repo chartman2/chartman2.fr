@@ -11,7 +11,7 @@ function createFetchResponse(data) {
   return { json: () => Promise.resolve(data) }
 }
 
-describe('Components - partial/main/contact_me', async () => {
+describe('Components - partial/main/contact_me', () => {
   it('is a Vue instance', async () => {
     const wrapper = await mountSuspended(TestResource, {
       shallow: true
@@ -35,9 +35,7 @@ describe('Components - partial/main/contact_me', async () => {
   })
 
   it('cannot send email', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
     $fetch.mockResolvedValue(createFetchResponse(true))
     
@@ -47,9 +45,7 @@ describe('Components - partial/main/contact_me', async () => {
   })
 
   it('can send email', async () => {
-    const wrapper = await mountSuspended(TestResource, {
-      shallow: true
-    })
+    const wrapper = await mountSuspended(TestResource)
 
     $fetch.mockResolvedValue(createFetchResponse(true))
 
