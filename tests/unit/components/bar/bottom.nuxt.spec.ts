@@ -20,10 +20,10 @@ describe('Components - bar/bottom', () => {
     })
     const dayjs = useDayjs()
 
-    expect(wrapper.vm.currentYear.value).toEqual(dayjs().year())
-    expect(wrapper.vm.currentRangeYears.value).toEqual('2022-' + dayjs().year())
+    expect(wrapper.vm.currentYear.value).toStrictEqual(dayjs().year())
+    expect(wrapper.vm.currentRangeYears.value).toStrictEqual('2022-' + dayjs().year())
 
-    expect(wrapper.vm.social).toEqual([
+    expect(wrapper.vm.social).toStrictEqual([
       {
         name: "Facebook",
         route: "https://www.facebook.com/christophe.hartmann1/",
@@ -36,7 +36,7 @@ describe('Components - bar/bottom', () => {
       },
     ])
 
-    expect(wrapper.vm.links).toEqual([
+    expect(wrapper.vm.links).toStrictEqual([
       {
         name: 'NuxtJS',
         icon: 'i-mdi:nuxt',

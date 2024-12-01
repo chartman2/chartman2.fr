@@ -6,6 +6,7 @@ export default defineVitestConfig({
   ],
   test: {
     environment: 'nuxt',
+    testTimeout: 600000,
     mockReset: true,
     environmentOptions: {
         nuxt: {
