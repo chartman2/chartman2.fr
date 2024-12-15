@@ -204,8 +204,5 @@ watch(filterTaskScope, async (newFilter, oldFilter) => {
 
 Dans cet article, nous avons réussi à mettre en œuvre une application de liste de tâches avec une fonction de filtrage du champ d'application. 
 
-Nous avons commencé par créer l'API backend en utilisant Rails et nous avons refait le code frontend pour nous y connecter. Ensuite, nous avons défini les types de portée et implémenté la logique de filtrage à la fois dans le nouveau formulaire de tâche et dans le composant de liste de tâches. 
-Avec cette implémentation, les utilisateurs peuvent maintenant filtrer leurs tâches par domaine (personnel, travail, famille ou autre) et ne voir que les tâches pertinentes dans chaque catégorie de domaine. 
 
-Dans le prochain article, nous explorerons d'autres améliorations de notre application de liste de tâches, telles que l'implémentation de dates d'échéance, la priorisation et les fonctionnalités de délégation de tâches. 
 

@@ -209,6 +209,7 @@ Les règles de validation (const rules = reactive([ (value: string) => { ... } ]
 Les fonctions addTask et performTask sont définis pour ajouter une nouvelle tâche et marquer une tâche comme terminée respectivement.
 
 Il ne reste plus qu'à intégrer notre composant à notre page d'index
+
 **pages/index.vue**
 
 ```vue
@@ -228,3 +229,5 @@ Il ne reste plus qu'à intégrer notre composant à notre page d'index
   </v-row>
 </template>
 ```
+
+[troisième partie](/blog/article/3-refactor-component)

@@ -115,14 +115,13 @@ Le stock possède trois parties principales :
 Le stock est configuré pour conserver son état à l'aide du mécanisme de stockage localStorage.
 
 
-HMR (Remplacement d'modules chauds)
+HMR (Remplacement de modules à chauds)
 
 
 La dernière partie du code vérifie si HMR (Hot Module Replacement) est activée en vérifiant si la propriété hot existe sur l'objet import.meta. Si oui, il appelle la méthode accept avec une fonction acceptHMRUpdate en argument. Ceci est une fonctionnalité spécifique de Pinia qui permet de gérer les mises à jour effectuées durant le remplacement d'un module.
 
 
 La fonction acceptHMRUpdate prend deux arguments : le stock (utiliser useTodoStore) et l'objet de remplacement de modules chauds (import.meta.hot). Elle est utilisée pour mettre à jour le stock lorsque le module est remplacé (par exemple, en raison d'une modification du code).
-
 
 
 **components/partial/todo/new.vue**
@@ -176,7 +175,7 @@ const addTask = () => {
 </script>
 ```
 
-Le code importe la fonction useTodoStore du module ~/stores/todo qui fournit l'accès à un stock Pinia pour gérer les éléments des tâches.
+Le code importe la fonction useTodoStore du module **~/stores/todo** qui fournit l'accès à un stock Pinia pour gérer les éléments des tâches.
 
 
 Utilisation de i18n : Le code importe également la fonction useI18n, qui fournit un système d'internationalisation pour traduire les chaînes de caractères.
@@ -233,3 +232,5 @@ Ajoutons le composant todo/new à la page d'index
 ```
 
 Dans l'article suivant nous ajouterons le contexte (scope : perso, famille, etc...)
+
+[quatrième partie](/blog/article/4-scope)
