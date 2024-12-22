@@ -42,7 +42,7 @@ describe('Components - partial/main/skills', () => {
       },
       {
         title: "Backend",
-        text: "C'est la partie invisible pour les visiteurs mais qui donne vie au site. Le backend conserve toutes les données du webmaster et de ses clients, un peu comme un grand tableau. les langages comme PHP, Ruby, Python, SQL etc...",
+        text: "C’est la partie invisible pour les visiteurs mais qui donne vie au site. Le backend conserve toutes les données du webmaster et de ses clients, un peu comme un grand tableau. les langages comme PHP, Ruby, Python, SQL etc...",
         skill: [
           {
             type: "icon",
