@@ -1,0 +1,120 @@
+---
+title: 'To-do list App'
+description: 'Backend - Développement'
+icon: 'i-mdi:checkbox-marked-circle-plus-outline'
+article_id: '6-to-do-list-backend-development'
+---
+
+# Mise en place des utilisateurs et de la connexion api
+
+
+Pour gérer les utilisateurs, nous allons utiliser Devise (https://github.com/heartcombo/devise#getting-started)
+Et devise-api pour la gestion Api (https://github.com/nejdetkadir/devise-api)
+
+## Installation
+
+
+```bash
+rails generate devise:install
+```
+
+Editer le fichier `config/environments/development.rb`
+
+```rb
+config.action_mailer.default_url_options = { host: 'mailpit.traefik.me', port: 1025 }
+```
+
+Génération du model `User` 
+
+```bash
+rails generate devise user
+```
+
+Lancer les migrations
+
+```bash
+rails db:migrate
+```
+
+```bash
+rails generate devise_api:install
+```
+
+Lancer les migrations
+
+```bash
+rails db:migrate
+```
+Modification du modèle `User`
+
+```rb
+class User < ApplicationRecord
+  devise :database_authenticatable, 
+         :registerable, 
+         :recoverable,
+         :rememberable,
+         :validatable,
+         :api # <--- Add this module
+end
+```
+Routes
+ 
+| Prefix   | Verb    | URI Pattern     | Controller#Action                          |
+|----------|---------|-----------------|-------------------------------------------|
+| revoke_user_tokens| POST| /users/tokens/revoke| devise/api/tokens#revoke |
+| refresh_user_tokens| POST| /users/tokens/refresh| devise/api/tokens#refresh |
+| sign_up_user_tokens| POST| /users/tokens/sign_up| devise/api/tokens#sign_up |
+| sign_in_user_tokens| POST| /users/tokens/sign_in| devise/api/tokens#sign_in |
+| info_user_tokens| GET| /users/tokens/info| devise/api/tokens#info |
+
+Configuration
+
+```rb
+# config/initializers/devise.rb
+Devise.setup do |config|
+  config.api.configure do |api|
+    # Access Token
+    api.access_token.expires_in = 1.hour
+    api.access_token.expires_in_infinite = ->(_resource_owner) { false }
+    api.access_token.generator = ->(_resource_owner) { Devise.friendly_token(60) }
+
+
+    # Refresh Token
+    api.refresh_token.enabled = true
+    api.refresh_token.expires_in = 1.week
+    api.refresh_token.generator = ->(_resource_owner) { Devise.friendly_token(60) }
+    api.refresh_token.expires_in_infinite = ->(_resource_owner) { false }
+
+    # Sign up
+    api.sign_up.enabled = true
+    api.sign_up.extra_fields = []
+
+    # Authorization
+    api.authorization.key = 'Authorization'
+    api.authorization.scheme = 'Bearer'
+    api.authorization.location = :both # :header or :params or :both
+    api.authorization.params_key = 'access_token'
+
+
+    # Base classes
+    api.base_token_model = 'Devise::Api::Token'
+    api.base_controller = '::DeviseController'
+
+
+    # After successful callbacks
+    api.after_successful_sign_in = ->(_resource_owner, _token, _request) { }
+    api.after_successful_sign_up = ->(_resource_owner, _token, _request) { }
+    api.after_successful_refresh = ->(_resource_owner, _token, _request) { }
+    api.after_successful_revoke = ->(_resource_owner, _token, _request) { }
+
+
+    # Before callbacks
+    api.before_sign_in = ->(_params, _request, _resource_class) { }
+    api.before_sign_up = ->(_params, _request, _resource_class) { }
+    api.before_refresh = ->(_params, _request, _resource_class) { }
+    api.before_revoke = ->(_params, _request, _resource_class) { }
+  end
+end
+```
+
+## Génération 

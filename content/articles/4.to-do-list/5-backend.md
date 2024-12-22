@@ -2,7 +2,7 @@
 title: 'To-do list App'
 description: 'Backend'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
-article_id: '4-to-do-list-backend'
+article_id: '5-to-do-list-backend'
 ---
 
 
@@ -39,12 +39,15 @@ cd todo-backend
 ```
 
 * Créer une base de données postgresql pour les données 
+
 Editer le fichier de credential
 
 
 ```shell
 docker compose exec backend EDITOR=vim rails credentials:edit
 ```
+
+Modifier en fonction de vos paramètres
 
 ```yml
 APP_URL: todo-backend.traefik.me
@@ -74,7 +77,8 @@ docker compose up
 ```
 
 
-Accéder aux adresses : 
+Accéder aux adresses :
+
 ```shell
 https://<APP_URL>
 https://<APP_VSCODE_URL>

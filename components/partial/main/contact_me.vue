@@ -5,69 +5,71 @@
       class="text-center"
     >
       <section-title title="Contactez moi" />
+      <client-only>
 
-      <v-responsive>
-        <v-form
-          ref="form"
-          v-model="valid"
-        >
-          <v-row>
-            <v-col cols="12">
-              <v-text-field
-                v-model="name"
-                flat
-                label="Nom*"
-                :rules="nameRules"
-              />
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12">
-              <v-text-field
-                v-model="email"
-                flat
-                label="Email*"
-                :rules="emailRules"
-              />
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12">
-              <v-text-field
-                v-model="subject"
-                flat
-                label="Sujet*"
-                :rules="subjectRules"
-              />
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12">
-              <v-textarea
-                v-model="message"
-                flat
-                label="Message*"
-                :rules="messageRules"
-              />
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col
-              class="mx-auto py-4"
-              cols="12"
-            >
-              <v-btn
-                color="primary"
-                block
-                dark
-                @click="sendEmail"
+        <v-responsive>
+          <v-form
+            ref="form"
+            v-model="valid"
+          >
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="name"
+                  flat
+                  label="Nom*"
+                  :rules="nameRules"
+                />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="email"
+                  flat
+                  label="Email*"
+                  :rules="emailRules"
+                />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="subject"
+                  flat
+                  label="Sujet*"
+                  :rules="subjectRules"
+                />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col cols="12">
+                <v-textarea
+                  v-model="message"
+                  flat
+                  label="Message*"
+                  :rules="messageRules"
+                />
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col
+                class="mx-auto py-4"
+                cols="12"
               >
-                Envoyer
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-form>
-      </v-responsive>
+                <v-btn
+                  color="primary"
+                  block
+                  dark
+                  @click="sendEmail"
+                >
+                  Envoyer
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-form>
+        </v-responsive>
+      </client-only>
     </v-container>
   </v-card>
 </template>
