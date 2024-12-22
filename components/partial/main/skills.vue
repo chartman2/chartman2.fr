@@ -80,9 +80,8 @@
 </template>
 
 <script setup>
-import { CSkills } from '~/utils/common'
+import { CSkillsCICD } from '~/utils/common'
 
-// const skills = reactive(CSkills)
 const skills = reactive([
   {
     title: 'Frontend',
@@ -144,35 +143,6 @@ const skills = reactive([
       },
     ],
   },
-  {
-    title: 'CI/CD',
-    text: 'L\'intégration continue (CI) est un ensemble de pratiques utilisées en génie logiciel consistant à vérifier à chaque modification de code source que le résultat des modifications ne produit pas de régression dans l\'application développée. Le déploiement continu ou Continuous deployment (CD) en anglais, est une approche d\'ingénierie logicielle dans laquelle les fonctionnalités logicielles sont livrées fréquemment par le biais de déploiements automatisés.',
-    skill: [
-      {
-        type: 'image',
-        src: '/img/gitea.png',
-        title: 'Gitea',
-        text: 'Code hosting',
-      },
-      {
-        type: 'image',
-        src: '/img/jenkins.png',
-        title: 'Jenkins',
-        text: 'Automation',
-      },
-      {
-        type: 'image',
-        src: '/img/sonarqube.png',
-        title: 'SonarQube',
-        text: 'Code quality and security',
-      },
-      {
-        type: 'image',
-        src: '/img/openproject.jpg',
-        title: 'Openproject',
-        text: 'Project managment',
-      },
-    ],
-  },
+  CSkillsCICD
 ])
 </script>
