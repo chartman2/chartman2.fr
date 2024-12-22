@@ -49,7 +49,7 @@ pipeline {
                                         -Dsonar.sources='pages, layouts, components, stores, composables' \
                                         -Dsonar.exclusions=public/**/* \
                                         -Dsonar.host.url=$SONAR_URL \
-                                        -Dsonar.login=$SONAR_CREDENTIALS \
+                                        -Dsonar.token=$SONAR_CREDENTIALS \
                                         -Dsonar.testExecutionReportPaths=sonar-report.xml \
                                         -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info"
                             }
