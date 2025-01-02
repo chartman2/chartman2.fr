@@ -1,11 +1,10 @@
-version: "3.9"
-
 services:
   frontend:
     build: 
       context: ./
       dockerfile: Dockerfile
-    command:  sh -c "pnpm run dev"
+    command:  sh -c "pnpm install && pnpm run dev"
+    # command:  sh -c "pnpm install && pnpm run build && pnpm run production"
     working_dir: '/app'
     user: node
     tty: true

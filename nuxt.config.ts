@@ -17,7 +17,15 @@ export default defineNuxtConfig({
     '@dargmuesli/nuxt-cookie-control',
     'nuxt-resend',
     '@nuxt/image',
+    (process.env.APP_ENVIRONMENT === 'production') ? '@sentry/nuxt/module' : '',
   ],
+  runtimeConfig: {
+    public: {
+      appUrl: process.env.APP_URL,
+      appName: process.env.APP_NAME,
+      environment: process.env.APP_ENVIRONMENT,
+    },
+  },
   ssr: true,
   devtools: {
     enabled: true,

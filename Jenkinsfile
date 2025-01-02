@@ -37,7 +37,7 @@ pipeline {
                 echo 'Check quality..'
                 script {
                     def scannerHome = tool 'sonarqube-scanner';
-                    def sonarqubeBranch = 'chartman2.fr-dev';
+                    def sonarqubeBranch = 'chartman2.fr-develop';
                     withCredentials([string(credentialsId: 'sonarqube-server', variable: 'SONAR_URL')]) {
                         withCredentials([string(credentialsId: 'sonarqube-token', variable: 'SONAR_CREDENTIALS')]) {
                             withSonarQubeEnv() {
@@ -63,10 +63,12 @@ pipeline {
                 script {
                     withSonarQubeEnv() {
                         sleep(10)
-                        def qualitygate = waitForQualityGate()
-                        if (qualitygate.status != "OK") {
-                            env.WORKSPACE = pwd()
-                            error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+                        timeout(time: 1, unit: 'HOURS') {
+                            def qualitygate = waitForQualityGate()
+                            if (qualitygate.status != "OK") {
+                                env.WORKSPACE = pwd()
+                                error "Pipeline aborted due to quality gate coverage failure: ${qualitygate.status}"
+                            }
                         }
                     }
                 }

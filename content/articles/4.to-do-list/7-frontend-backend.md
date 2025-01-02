@@ -917,3 +917,365 @@ export const StatusCode5xx = {
 }
 ```
 
+Application des changements dans les pages
+
+`middleware/auth.ts`
+
+```ts
+import { useApplicationStore } from '~/stores/application'
+
+export default defineNuxtRouteMiddleware(async (to) => {
+  const nuxtApp = useNuxtApp()
+
+  useRuntimeHook('page:finish', async () => {
+    const usersStore = useApplicationStore()
+    
+    if (! usersStore.getIsConnected) {
+      return navigateTo('/log_in')
+    }
+
+    // @ts-ignore
+    if (nuxtApp.$api.auth.getStorageAttribut('token') === '' ) {
+      return navigateTo('/log_in')
+    }
+
+    // @ts-ignore
+    const { data, statusCode } = await nuxtApp.$api.auth.info()
+
+    if (statusCode !== 200) {
+      return navigateTo('/log_in')
+    }
+  })
+})
+```
+
+`pages/index.vue`
+
+```vue
+<template>
+  <v-row class="d-flex align-self-start py-12">
+    <v-container>
+      <page-title :title="$t('global.name')" icon="i-mdi:format-list-checks" />
+
+      <section-title :title="$t('tasks.form.title')" />
+
+      <v-row align="center" justify="center">
+        <v-col cols="auto">
+          <v-btn size="x-large" :nuxt="true" to="todo"> 
+            Todo list
+          </v-btn>
+        </v-col>
+      </v-row>
+    </v-container>
+  </v-row>
+</template>
+<script setup lang="ts">
+  definePageMeta({
+    middleware: 'auth',
+  })
+</script>
+```
+
+`pages/log_in.vue`
+
+```vue
+<template>
+  <v-row class="d-flex align-self-start py-12">
+    <v-container class="py-12">
+      <page-title
+        :title="$t('auth.log_in')"
+        icon="i-mdi:login-variant"
+        subtitle=""
+      />
+        <card-log-in @on-sign-in="onSignIn" />
+    </v-container>
+  </v-row>
+</template>
+
+<script setup>
+const { $procedures, $api } = useNuxtApp()
+const snackbar = useSnackbar()
+const { t } = useI18n()
+
+
+const onSignIn = async (email, password) => {
+  const result = await $procedures.auth.signIn(email.value, password.value)
+  const router = useRouter()
+
+  let text = t('auth.failed')
+
+  if (result.success) {
+    text = t('auth.successed') 
+
+    router.push({ path: '/' })
+  }
+
+  snackbar.add({
+    type: result.type,
+    title: t(result.title),
+    text: text
+  })
+}
+</script>
+```
+
+`pages/todo.vue`
+
+```vue
+<template>
+  <v-row class="d-flex align-self-start py-12">
+    <v-container>
+      <page-title :title="$t('global.name')" icon="i-mdi:format-list-checks" />
+
+      <section-title :title="$t('tasks.form.title')" />
+
+      <v-row class="py-3" v-if="formErrors.length > 0">
+        <v-alert
+          
+          class="py-3"
+          density="compact"
+          :text="formErrors"
+          :title="$t('httpCode.warning')"
+          type="warning"
+        />
+      </v-row>
+
+      <partial-todo-new @on-create-item="onCreateItem" />
+        
+      <section-title :title="$t('tasks.list.title')" />
+
+      <partial-todo-list @on-update-item="onUpdateItem" />
+    </v-container>
+  </v-row>
+</template>
+<script setup lang="ts">
+import type { ReturnedResponseType } from '~/types/common';
+
+definePageMeta({
+  middleware: 'auth',
+})
+
+const nuxtApp = useNuxtApp()
+const { t } = useI18n()
+const snackbar = useSnackbar()
+const formErrors = ref('')
+
+useRuntimeHook('page:finish', async () => {
+  await getScopesList()
+
+  await getTasksList()
+})
+
+const onCreateItem = async (name: string, scopeId: number) => {
+  formErrors.value = ''
+
+  // @ts-ignore
+  const result: ReturnedResponseType = await nuxtApp.$services.items.create({
+    name,
+    scope_id: scopeId,
+    done: false
+  })
+
+  checkResults(result, 'tasks.form.created', 'tasks.form.failed')
+
+  getTasksList()
+}
+
+const onUpdateItem = async (itemId: number, name: string, scopeId: number, done: boolean) => {
+  // @ts-ignore
+  const result: ReturnedResponseType = await nuxtApp.$services.items.update(itemId, {
+    name,
+    done,
+    scope_id: scopeId
+  })
+
+  checkResults(result, 'tasks.form.updated', 'tasks.form.failed')
+
+  getTasksList()
+}
+
+const getTasksList = async () => {
+  // @ts-ignore
+  const result: ReturnedResponseType = await nuxtApp.$services.items.list()
+
+  checkResults(result, 'tasks.fetch.successed', 'tasks.fetch.failed')
+}
+
+const getScopesList = async () => {
+  // @ts-ignore
+  const result: ReturnedResponseType = await nuxtApp.$services.scopes.list()
+
+  checkResults(result, 'tasks.fetch.successed', 'tasks.fetch.failed')
+}
+
+const checkResults = (result: ReturnedResponseType, successed: string, failed: string) => {
+  let text = t(failed)
+
+  if (result.success) {
+    text = t(successed)
+  } else {
+    // @ts-ignore
+    formErrors.value = nuxtApp.$services.apiErrors.format(result.data, t)
+  }
+
+  snackbar.add({
+    type: result.type,
+    title: t(result.title),
+    text: text
+  })
+}
+</script>
+```
+
+`components/partial/todo/list.vue`
+
+```vue
+<template>
+  <v-row>
+    <v-radio-group
+      v-model="filterTaskScope"
+      inline
+    >
+      <template 
+        v-for="scope in scopes"
+        :key="scope.attributes.id"
+        >
+        <v-radio
+          :label="scope.attributes.nickname"
+          :value="scope.attributes.id"
+        />
+      </template>
+      <v-radio
+        :label="$t('tasks.list.all')"
+        :value="0"
+      />
+    </v-radio-group>
+  </v-row>
+  <v-row
+    v-for="task in listTasksFiltred"
+    :key="task.attributes.id"
+  >
+    <v-col cols="4">
+      <v-chip color="primary">
+        <div :class="{'text-decoration-line-through': task.attributes.done === true}">
+          {{ $t('tasks.scope.' + getScopeNicknameFromItem(task.attributes.scopeId)) }}
+          {{ task.attributes.done === true ? 'Y' : 'N' }}
+        </div>
+      </v-chip>
+    </v-col>
+    <v-col cols="4">
+      <div :class="{'text-decoration-line-through': task.attributes.done === true}">
+        {{ task.attributes.name }}
+      </div>
+    </v-col>
+    <v-col cols="4">
+      <v-btn 
+        v-if="task.attributes.done === false"
+        type="button" 
+        block
+        @click.prevent="performTask(task)"
+      >
+        <v-icon icon="i-mdi:checkbox-marked-circle-plus-outline" />
+      
+        {{ $t('tasks.form.done') }}
+      </v-btn>
+    </v-col>
+  </v-row>
+</template>
+<script setup lang="ts">
+import { useTodoStore } from '~/stores/todo'
+import type { IItemData } from '~/types/todo';
+
+const emit = defineEmits(['onUpdateItem'])
+
+const todoStore = useTodoStore()
+const items = computed(() => todoStore.getItems)
+const scopes = computed(() => todoStore.getScopes)
+const filterTaskScope = ref(0)
+const listTasksFiltred = computed(() => {
+  if (filterTaskScope.value !== 0) {
+    return items.value.filter( (item) => {
+      return item.attributes.scopeId === filterTaskScope.value
+    })
+  }
+
+  return items.value
+})
+
+const performTask = (task: IItemData) => {
+  emit('onUpdateItem', task.attributes.id, task.attributes.name, task.attributes.scopeId, true)
+}
+
+const getScopeNicknameFromItem = (scopeId: number) => {
+  return scopes.value.find(scope => scope.attributes.id === scopeId)?.attributes.nickname
+}
+</script>
+```
+
+`components/partial/todo/new.vue`
+
+```vue
+<template>
+  <v-form 
+    @submit.prevent="addTask" 
+    v-model="formValid"
+  >
+    <v-row>
+      <v-col cols="8">
+        <v-text-field
+          v-model="newTaskName"
+          :rules="rules"
+          :label="$t('tasks.form.name')"
+        ></v-text-field>
+      </v-col>
+      <v-col cols="4">
+        <v-btn type="submit" block :disabled="!formValid">
+          {{ $t('tasks.form.add') }}
+        </v-btn>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-radio-group
+        v-model="newTaskScope"
+        :rules="rules"
+        inline
+      >
+        <v-radio
+          v-for="(scope, scopeKey) in scopes"
+          :key="scopeKey"
+          :label="$t('tasks.scope.' + scope.attributes.nickname)"
+          :value="scope.attributes.id"
+        ></v-radio>
+      </v-radio-group>
+    </v-row>
+  </v-form>
+</template>
+
+<script setup lang="ts">
+import { useTodoStore } from '~/stores/todo'
+import type { IScope } from '~/types/scope'
+
+const emit = defineEmits(['onCreateItem'])
+
+const todoStore = useTodoStore()
+const { t } = useI18n()
+const scopes = computed(() => todoStore.getScopes)
+const newTaskName = ref('')
+const newTaskScope = ref(null as IScope | null)
+const formValid = ref(false)
+const rules = reactive([
+  (value: string) => {
+    if (value) return true
+
+    return t('tasks.form.required')
+  },
+])
+
+const addTask = () => {
+  emit('onCreateItem', newTaskName.value, newTaskScope.value)
+
+  newTaskName.value = ''
+  newTaskScope.value = null
+}
+</script>
+```
