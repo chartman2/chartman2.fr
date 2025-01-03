@@ -91,7 +91,7 @@ pipeline {
                                     then
                                         sudo rm ../.ssh/id_ed25519.pub
                                     fi
-                                    git remote add github https://$GITHUB_CREDENTIALS@github.com/tititoof/chartman2-fr.git
+                                    git remote add github https://$GITHUB_CREDENTIALS@github.com/chartman2/chartman2.fr.git
                                 '''
                                 sh """
                                     git config --global user.email "chartmann.35@gmail.com"
@@ -110,7 +110,6 @@ pipeline {
                         }
                         if (env.BRANCH_NAME == 'develop') {
                             withCredentials([string(credentialsId: 'github-token', variable: 'GITHUB_CREDENTIALS')]) {
-
                                 sh '''
                                     if [ -f ../.ssh/id_ed25519.pub ]
                                     then
@@ -119,7 +118,7 @@ pipeline {
                                     if git remote | grep github > /dev/null; then
                                         git remote rm github
                                     fi
-                                    git remote add github https://$GITHUB_CREDENTIALS@github.com/tititoof/chartman2-fr.git
+                                    git remote add github https://$GITHUB_CREDENTIALS@github.com/chartman2/chartman2.fr.git
                                 '''
                                 sh """
                                     git config --global user.email "chartmann.35@gmail.com"
