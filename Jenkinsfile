@@ -124,17 +124,18 @@ pipeline {
                                         git remote rm github
                                     fi
                                     
-                                    git remote add github https://$GITHUB_CREDENTIALS@github.com/chartman2/chartman2.fr.git
-                                """
-                                sh """
                                     git config --global user.email "chartmann.35@gmail.com"
                                     git config --global user.name "Christophe Hartmann"
+                                    git remote add github https://$GITHUB_CREDENTIALS@github.com/chartman2/chartman2.fr.git
+                                    
                                     touch github-update.txt
                                     touch ./.sonarcloud.properties
+                                    
                                     echo "sonar.sources=pages,layouts,components,store" >> ./.sonarcloud.properties
                                     echo "sonar.exclusions=test/**/*, coverage/**/*" >> ./.sonarcloud.properties
                                     echo "sonar.testExecutionReportPaths=test-report.xml" >> ./.sonarcloud.properties
                                     echo "sonar.javascript.lcov.reportPaths=./coverage/lcov.info" >> ./.sonarcloud.properties
+                                    
                                     git add .
                                     git commit -m "feat(github): update repository"
                                     git push -f github HEAD:develop
