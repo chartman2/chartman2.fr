@@ -126,6 +126,7 @@ pipeline {
                                     
                                     git config --global user.email "chartmann.35@gmail.com"
                                     git config --global user.name "Christophe Hartmann"
+                                    git config --global http.sslverify false
                                     git remote add github https://$GITHUB_CREDENTIALS@github.com/chartman2/chartman2.fr.git
                                     
                                     touch github-update.txt
