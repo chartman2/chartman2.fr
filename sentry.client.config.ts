@@ -11,5 +11,8 @@ if (config.public.SENTRY_DSN && typeof config.public.SENTRY_DSN == 'string') {
     // We recommend adjusting this value in production, or using tracesSampler
     // for finer control
     tracesSampleRate: 1.0,
+    telemetry: {
+
+    }
   })
 }
