@@ -1,15 +1,14 @@
-import * as Sentry from "@sentry/nuxt"
+import * as Sentry from "@sentry/nuxt";
 
-const config = useRuntimeConfig()
+Sentry.init({
+  // If set up, you can use your runtime config here
+  // dsn: useRuntimeConfig().public.sentry.dsn,
+  dsn: "https://207309d46a814f3fa84114993b235467@glitchtip.cyric.lan/1",
 
-if (config.public.SENTRY_DSN && typeof config.public.SENTRY_DSN == 'string') {
-  // Sentry.init({
-  //   // If set up, you can use the Nuxt runtime config here
-  //   // dsn: useRuntimeConfig().public.sentry.dsn, // modify, depending on your custom runtime config
-  //   dsn: config.public.SENTRY_DSN,
-
-  //   // We recommend adjusting this value in production, or using tracesSampler
-  //   // for finer control
-  //   tracesSampleRate: 1.0,
-  // })
-}
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 1.0,
+  
+  // Setting this option to true will print useful information to the console while you're setting up Sentry.
+  debug: false,
+});
