@@ -3,7 +3,6 @@ import * as Sentry from "@sentry/nuxt"
 const config = useRuntimeConfig()
 
 if (config.public.SENTRY_DSN && typeof config.public.SENTRY_DSN == 'string') {
-  console.log(config.public.SENTRY_DSN)
   Sentry.init({
     dsn: config.public.SENTRY_DSN,
 
