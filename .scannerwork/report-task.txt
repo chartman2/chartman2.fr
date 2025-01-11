@@ -1,0 +1,6 @@
+projectKey=chartman2.fr-develop
+serverUrl=https://sonarqube.baine.lan
+serverVersion=24.12.0.100206
+dashboardUrl=https://sonarqube.baine.lan/dashboard?id=chartman2.fr-develop
+ceTaskId=b92ec35a-29e1-4582-94a8-fd4c7b09d82a
+ceTaskUrl=https://sonarqube.baine.lan/api/ce/task?id=b92ec35a-29e1-4582-94a8-fd4c7b09d82a
