@@ -1,12 +1,17 @@
-import * as Sentry from "@sentry/nuxt";
+import * as Sentry from "@sentry/nuxt"
+import dotenv from "dotenv"
  
-Sentry.init({
-  dsn: "https://207309d46a814f3fa84114993b235467@glitchtip.cyric.lan/1",
+dotenv.config()
 
-  // We recommend adjusting this value in production, or using tracesSampler
-  // for finer control
-  tracesSampleRate: 1.0,
-  
-  // Setting this option to true will print useful information to the console while you're setting up Sentry.
-  debug: false,
-});
+if (process.env.SENTRY_DSN && typeof process.env.SENTRY_DSN == 'string') {
+  Sentry.init({
+    dsn: process.env.SENTRY_DSN,
+
+    // We recommend adjusting this value in production, or using tracesSampler
+    // for finer control
+    tracesSampleRate: 1.0,
+    
+    // Setting this option to true will print useful information to the console while you're setting up Sentry.
+    debug: false,
+  })
+}
