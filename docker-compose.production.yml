@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build:
+      context: ./
+      dockerfile: Dockerfile.production
+    working_dir: '/app'
+    user: node
+    ports:
+      - 3000
