@@ -1,9 +1,9 @@
 services:
   frontend:
     build:
-      context: ./
-      dockerfile: Dockerfile.production
+      context: ./../
+      dockerfile: ./.production/Dockerfile
     working_dir: '/app'
     user: node
     ports:
-      - 3000
+      - 4000:3000
