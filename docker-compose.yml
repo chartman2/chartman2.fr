@@ -20,3 +20,5 @@ services:
       - traefik.enable=true
       - "traefik.http.routers.<unique_router_name>.rule=Host(`chartman2fr.torm.lan`) && PathPrefix(`/`)"
       - traefik.http.routers.<unique_router_name>.entryPoints=http
+    volumes:
+      - /etc/ssl/certs:/etc/ssl/certs:ro
