@@ -16,3 +16,7 @@ services:
       - NUXT_RESEND_API_KEY="${NUXT_RESEND_API_KEY}"
       - SENTRY_DSN="${SENTRY_DSN}"
       - SERVICE_FQDN_FRONTEND_4000
+    labels:
+      - traefik.enable=true
+      - "traefik.http.routers.<unique_router_name>.rule=Host(`chartman2fr.torm.lan`) && PathPrefix(`/`)"
+      - traefik.http.routers.<unique_router_name>.entryPoints=http
