@@ -3,6 +3,10 @@ FROM node:22-slim AS build
 # Set the working directory
 WORKDIR /app
 
+ARG APP_ENVIRONMENT
+ARG COMPATIBILITY_DATE
+ARG NUXT_RESEND_API_KEY
+ARG SENTRY_DSN
 # Copy package.json and pnpm-lock.yaml
 COPY package.json pnpm-lock.yaml ./
 # Install pnpm
