@@ -2,6 +2,7 @@
   import * as Sentry from "@sentry/nuxt";
 
   const triggerError = () => {
+    console.log('error')
     throw new Error("Nuxt Button Error");
   };
 
