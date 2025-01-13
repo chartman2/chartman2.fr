@@ -4,22 +4,22 @@ tasks:
   build:
     desc: Construction des services Docker
     cmds:
-      - UID_GID="$(id -u):$(id -g)" docker compose build
+      - UID_GID="$(id -u):$(id -g)" docker compose -f docker-compose-dev.yml build
   up:
     desc: Démarrage des services Docker
     cmds:
-      - UID_GID="$(id -u):$(id -g)" docker compose up -d
+      - UID_GID="$(id -u):$(id -g)" docker compose -f docker-compose-dev.yml up -d
       - cat ~/.config/code-server/config.yaml
       - docker compose exec frontend sh
   down:
     desc: Arrêt des services Docker
     cmds:
-      - docker compose down
+      - docker compose -f docker-compose-dev.yml down
   logs:
     desc: Logs des services
     cmds:
-      - docker compose logs -f
+      - docker compose -f docker-compose-dev.yml logs -f
   f-restart:
     desc: Redémarrage du service frontend
     cmds:
-      - docker compose restart frontend
+      - docker compose -f docker-compose-dev.yml restart frontend
