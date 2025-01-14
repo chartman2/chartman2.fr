@@ -34,13 +34,6 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
-  sentry: {
-    sourceMapsUploadOptions: {
-      org: "chartman2.fr",
-      project: "chartman2.fr",
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-    },
-  },
   sourcemap: { client: "hidden" },
   app: {
     head: {
