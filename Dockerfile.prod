@@ -35,4 +35,4 @@ COPY --from=build /app/package.json /app/pnpm-lock.yaml /app/
 # Expose the port the app runs on
 EXPOSE 3000
 # Start the Nuxt app in production mode
-CMD ["node", "--import", "./.output/server/sentry.server.config.mjs", ".output/server/index.mjs"]
+CMD ["node", ".output/server/index.mjs"]

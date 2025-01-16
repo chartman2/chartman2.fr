@@ -1,5 +1,6 @@
 services:
-  frontend:
+  frontend-dev:
+    container_name: frontend-dev
     build: 
       context: ./
       dockerfile: Dockerfile.nuxt
@@ -60,7 +61,7 @@ services:
       context: ./
       dockerfile: Dockerfile.vscode
     depends_on:
-      - frontend
+      - frontend-dev
     volumes:
       - "$HOME/.local:/home/coder/.local"
       - "$HOME/.config:/home/coder/.config"

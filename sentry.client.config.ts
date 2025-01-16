@@ -1,12 +1,13 @@
 import * as Sentry from "@sentry/nuxt"
+import dotenv from "dotenv"
+ 
+dotenv.config()
 
-const config = useRuntimeConfig()
-
-if (config.public.SENTRY_DSN && typeof config.public.SENTRY_DSN == 'string') {
+if (process.env.SENTRY_DSN) {
   Sentry.init({
     // If set up, you can use your runtime config here
     // dsn: useRuntimeConfig().public.sentry.dsn,
-    dsn: config.public.SENTRY_DSN,
+    dsn: process.env.SENTRY_DSN,
 
     // We recommend adjusting this value in production, or using tracesSampler
     // for finer control

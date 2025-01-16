@@ -3,7 +3,7 @@ import dotenv from "dotenv"
  
 dotenv.config()
 
-if (process.env.SENTRY_DSN && typeof process.env.SENTRY_DSN == 'string') {
+if (process.env.SENTRY_DSN) {
   Sentry.init({
     dsn: process.env.SENTRY_DSN,
 
