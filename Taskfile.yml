@@ -27,10 +27,18 @@ tasks:
     cmds:
       - UID_GID="$(id -u):$(id -g)" docker compose -f docker-compose.dev.yml build frontend-dev
   f-restart:
-    desc: Redémarrage du service frontend
+    desc: Redémarrage du service frontend-dev
     cmds:
       - docker compose -f docker-compose.dev.yml restart frontend-dev
   f-ssh:
     desc: Connexion SSH au frontend
     cmds:
       - docker compose exec frontend-dev sh
+  prod-build:
+    desc: Build du frontend de production
+    cmds:
+      - docker compose --env-file .env.production build
+  prod-up:
+    desc: Démarrage du frontend de production
+    cmds:
+      - docker compose --env-file .env.production up -d
