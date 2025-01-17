@@ -15,6 +15,7 @@ services:
       - COMPATIBILITY_DATE="${COMPATIBILITY_DATE}"
       - NUXT_RESEND_API_KEY="${NUXT_RESEND_API_KEY}"
       - SENTRY_DSN="${SENTRY_DSN}"
+      - SENTRY_AUTH_TOKEN="${SENTRY_AUTH_TOKEN}"
       - SERVICE_FQDN_FRONTEND_4000
     labels:
       - traefik.enable=true
