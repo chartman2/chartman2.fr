@@ -7,7 +7,7 @@ if (process.env.SENTRY_DSN) {
   Sentry.init({
     // If set up, you can use your runtime config here
     // dsn: useRuntimeConfig().public.sentry.dsn,
-    dsn: process.env.SENTRY_DSN,
+    dsn: "http://207309d46a814f3fa84114993b235467@glitchtip-192-168-1-220.traefik.me/1",
 
     // We recommend adjusting this value in production, or using tracesSampler
     // for finer control

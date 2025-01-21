@@ -1,5 +1,6 @@
 services:
   frontend:
+    image: registryserver-192-168-1-223.traefik.me/chartman2fr:0.1
     build:
       context: ./
       dockerfile: ./Dockerfile.prod
@@ -19,7 +20,42 @@ services:
       - SERVICE_FQDN_FRONTEND_4000
     labels:
       - traefik.enable=true
-      - "traefik.http.routers.<unique_router_name>.rule=Host(`chartman2fr.torm.lan`) && PathPrefix(`/`)"
-      - traefik.http.routers.<unique_router_name>.entryPoints=http
+      - traefik.http.routers.appChartman2fr.rule=Host(`chartman2fr.torm.lan`) && PathPrefix(`/`)
+      - traefik.http.routers.appChartman2fr.entryPoints=http
     volumes:
       - /etc/ssl/certs:/etc/ssl/certs:ro
+      - type: bind
+        source: ./sentry.server.config.ts
+        target: ./sentry.server.config.ts
+        content: |
+          import * as Sentry from "@sentry/nuxt"
+          
+          Sentry.init({
+            dsn: $SENTRY_DSN,
+
+            // We recommend adjusting this value in production, or using tracesSampler
+            // for finer control
+            tracesSampleRate: 1.0,
+            
+            // Setting this option to true will print useful information to the console while you're setting up Sentry.
+            debug: false,
+          })
+      - type: bind
+        source: ./sentry.client.config.ts
+        target: ./sentry.client.config.ts
+        content: |
+          import * as Sentry from "@sentry/nuxt"
+
+          Sentry.init({
+            // If set up, you can use your runtime config here
+            // dsn: useRuntimeConfig().public.sentry.dsn,
+            dsn: $SENTRY_DSN,
+
+            // We recommend adjusting this value in production, or using tracesSampler
+            // for finer control
+            tracesSampleRate: 1.0,
+            
+            // Setting this option to true will print useful information to the console while you're setting up Sentry.
+            debug: false,
+          })
+
