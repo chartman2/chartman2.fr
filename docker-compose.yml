@@ -26,7 +26,7 @@ services:
       - /etc/ssl/certs:/etc/ssl/certs:ro
       - type: bind
         source: ./sentry.server.config.ts
-        target: ./sentry.server.config.ts
+        target: /sentry.server.config.ts
         content: |
           import * as Sentry from "@sentry/nuxt"
           
@@ -42,7 +42,7 @@ services:
           })
       - type: bind
         source: ./sentry.client.config.ts
-        target: ./sentry.client.config.ts
+        target: /sentry.client.config.ts
         content: |
           import * as Sentry from "@sentry/nuxt"
 
