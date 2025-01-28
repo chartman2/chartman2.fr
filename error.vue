@@ -36,16 +36,7 @@
         scope: error.fatal
       },
       async () => {
-        await $fetch("/api/sentry-api", 
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ 
-            name: "Error",
-            op: error.statusCode,
-            scope: error.fatal
-          }),
-        )
+        await $fetch("/api/sentry-api")
       },
     )
   }
