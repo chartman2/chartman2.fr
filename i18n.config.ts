@@ -42,7 +42,8 @@ export default defineI18nConfig(() => ({
           }
         },
         articles: {
-          title: 'Articles'
+          title: 'Articles',
+          unknow: 'Inconnu'
         }
       }
     }

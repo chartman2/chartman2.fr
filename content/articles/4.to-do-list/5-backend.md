@@ -2,6 +2,7 @@
 title: 'To-do list App'
 description: 'Backend'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
+color: 'black'
 article_id: '5-to-do-list-backend'
 ---
 

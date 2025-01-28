@@ -4,7 +4,6 @@
     <page-snackbar />
     <v-app>
       <v-main
-        dark="isDark"
         class="d-flex align-center fill-height pb-24"
         background-color="background"
       >

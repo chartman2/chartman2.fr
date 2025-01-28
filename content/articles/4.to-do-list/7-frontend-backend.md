@@ -2,6 +2,7 @@
 title: 'To-do list App'
 description: 'Frontend-backend'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
+color: 'black'
 article_id: '7-to-do-list-frontend-backend'
 ---
 
@@ -14,7 +15,7 @@ Ajout de la connexion au backend et les requêtes associées
 Création des plugins 
 `plugins/appApi.ts`
 
-```js
+```js [plugins/appApi.ts] meta-info=val
 export default defineNuxtPlugin((nuxtApp) => {
   // @ts-ignore
   const modulesToImport = import.meta.glob('../src/apis/modules/*.ts')

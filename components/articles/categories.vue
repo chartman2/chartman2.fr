@@ -13,6 +13,8 @@
         min-height="480"
         max-height="480"
         color="secondary-container"
+        variant="outlined"
+        v-aos="['animate__flipInX']"
       >
         <v-icon
           v-if="type === 'icon'"
@@ -36,7 +38,7 @@
         <v-card-text class="title font-weight-light mb-5">
           <v-sheet
             :height="30"
-            color="secondary-container"
+            color="background"
           >
             {{ text }}
           </v-sheet>
@@ -69,7 +71,7 @@ const articles = reactive([
     color: 'red',
     title: 'Ruby',
     text: 'Articles autour du langage Ruby.',
-    link: '/blog/category/ruby',
+    link: '/blog/category/ror',
   },
   {
     type: 'icon',
@@ -81,11 +83,19 @@ const articles = reactive([
   },
   {
     type: 'icon',
+    src: 'i-mdi:docker',
+    color: 'blue',
+    title: 'Docker',
+    text: 'Articles autour de Docker.',
+    link: '/blog/category/docker',
+  },
+  {
+    type: 'icon',
     src: 'i-mdi:checkbox-marked-circle-plus-outline',
     color: 'black',
     title: 'To-do list',
     text: 'Construction d\'une To-do list.',
-    link: '/blog/category/to-do-list',
+    link: '/blog/category/todolist',
   },
 ])
 </script>

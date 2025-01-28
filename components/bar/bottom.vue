@@ -23,8 +23,14 @@
               class="px-0"
             >
               <v-icon
+                v-if="s.icon === 'i-mdi:facebook'"
                 size="large"
-                :icon="s.icon"
+                icon="i-mdi:facebook"
+              />
+              <v-icon
+                v-if="s.icon === 'i-mdi:linkedin'"
+                size="large"
+                icon="i-mdi:linkedin"
               />
             </v-btn>
           </v-btn-group>
@@ -53,8 +59,19 @@
               class="px-0"
             >
               <v-icon
+                v-if="s.icon === 'i-mdi:nuxt'"
                 size="large"
-                :icon="s.icon"
+                icon="i-mdi:nuxt"
+              />
+              <v-icon
+                v-if="s.icon === 'i-mdi:vuetify'"
+                size="large"
+                icon="i-mdi:vuetify"
+              />
+              <v-icon
+                v-if="s.icon === 'i-mdi:language-ruby-on-rails'"
+                size="large"
+                icon="i-mdi:language-ruby-on-rails"
               />
             </v-btn>
           </v-btn-group>

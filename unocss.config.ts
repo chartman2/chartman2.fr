@@ -5,5 +5,5 @@ export default defineConfig({
     presetIcons({
       scale: 1.2, // scale the icons
     }),
-  ]
+  ],
 })

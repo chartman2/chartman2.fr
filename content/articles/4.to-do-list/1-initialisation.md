@@ -2,6 +2,7 @@
 title: 'To-do list App'
 description: 'Initialisation'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
+color: 'black'
 article_id: '1-to-do-list-initialisation'
 ---
 
@@ -22,7 +23,7 @@ Pour cela, j'ai créé un dépôt afin de commencer avec une configuration déj�
 * Créer un dépôt sur Github 'todo-frontend' et le clôner.
 
 
-```shell
+```shell[file.js]{2} meta-info=val
 git clone git@github.com:<username>/todo-frontend.git
 ```
  

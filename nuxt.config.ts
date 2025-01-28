@@ -66,30 +66,37 @@ export default defineNuxtConfig({
     defaultLocale: 'fr', // not needed if you have @nuxtjs/i18n installed
   },
   content: {
-    watch: false,
-    highlight: {
-      langs: [
-        'c',
-        'cpp',
-        'ruby',
-        'shell',
-        'yaml',
-        'json',
-        'js',
-        'ts',
-        'html',
-        'css',
-        'vue',
-      ],
-      // See the available themes on https://github.com/shikijs/shiki/blob/main/docs/themes.md#all-theme
-      theme: {
-        dark: 'github-dark',
-        default: 'github-light',
-      },
+    watch: {
+      enabled: false,
     },
-    markdown: {
-      tags: {
-        code: 'v-card',
+    build: {
+      markdown: {
+        toc: {
+          depth: 3, // include h3 headings
+        },
+        highlight: {
+          theme: {
+            // Default theme (same as single string)
+            default: 'material-theme-darker',
+            // Theme used if `html.dark`
+            dark: 'github-dark',
+            // Theme used if `html.sepia`
+            sepia: 'monokai'
+          },
+          langs: [
+            'c',
+            'cpp',
+            'ruby',
+            'shell',
+            'yaml',
+            'json',
+            'js',
+            'ts',
+            'html',
+            'css',
+            'vue',
+          ],
+        }
       },
     },
   },
@@ -100,6 +107,7 @@ export default defineNuxtConfig({
         clientPort: 443,
         path: 'hmr/',
       },
+      allowedHosts: ['chartman2-fr.traefik.me', 'chartman2-fr-wss.traefik.me'],
     },
   },
   hooks: { // @see https://github.com/nuxt/nuxt/issues/27558

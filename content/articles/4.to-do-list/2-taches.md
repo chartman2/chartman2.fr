@@ -2,6 +2,7 @@
 title: 'To-do list App'
 description: 'Tâches'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
+color: 'black'
 article_id: '2-to-do-list-taches'
 ---
 
@@ -11,7 +12,7 @@ Nous allons créer un composant pour ajouter une nouvelle tâche à notre liste
 
 Dans un premier temps, configurons le fichier de traduction **i18n.config.ts**
 
-```ts
+```ts [i18n.config.ts]
 export default defineI18nConfig(() => ({
   legacy: false,
   locale: 'fr',
@@ -61,7 +62,7 @@ Une tâche est composée de deux attributs :
 
 Contruisons le type correspondant **types/todo.ts**
 
-```ts
+```ts [types/todo.ts]
 export interface ITodoItem {
   name: string
   done: boolean
@@ -71,7 +72,7 @@ export interface ITodoItem {
 Créons un composant pour le titre avec un propriété **title** de type string.
 
 
-```vue
+```vue [components/page/title.vue]
 <template>
   <h2 class="display-2 font-weight-bold mb-3">
     {{ props.title }}
@@ -99,7 +100,7 @@ const props = defineProps({
 
 A partir de là, définissons notre composant pour gérer nos tâches (**components/partial/todo/list.vue**)
 
-```vue
+```vue [components/partial/todo/list.vue]
 <template>
   <section-title :title="$t('tasks.form.title')" />
   <v-form 
@@ -184,11 +185,11 @@ Le template est divisé en trois parties : une section titre, un formulaire et u
 
 
 
-La première partie <section-title :title="$t('tasks.form.title')"/> définit un élément <section-title> avec un attribut :title qui contient le texte traduit à l'aide de la fonction $t. Ce texte est défini dans le fichier de traduction (par exemple, tasks.form.title).
+La première partie `<section-title :title="$t('tasks.form.title')"/>` définit un élément `<section-title>` avec un attribut :title qui contient le texte traduit à l'aide de la fonction $t. Ce texte est défini dans le fichier de traduction (par exemple, tasks.form.title).
 
-Le formulaire (<v-form @submit.prevent="addTask" v-model="formValid">) permet d'ajouter une nouvelle tâche. Lorsqu'on soumet le formulaire, la fonction addTask est appelée.
+Le formulaire (`<v-form @submit.prevent="addTask" v-model="formValid">`) permet d'ajouter une nouvelle tâche. Lorsqu'on soumet le formulaire, la fonction addTask est appelée.
 
-La liste de tâches (<v-row v-for="(task, key) in listTasks" :key="key">) affiche chaque tâche avec son nom et un bouton pour marquer la tâche comme terminée.
+La liste de tâches (`<v-row v-for="(task, key) in listTasks" :key="key">`) affiche chaque tâche avec son nom et un bouton pour marquer la tâche comme terminée.
 
 
 Script (TS)
@@ -200,7 +201,7 @@ Le script est divisé en plusieurs parties :
 
 Les imports (import type { ITodoItem } from '~/types/todo';) importent le type ITodoItem défini dans le fichier ~/types/todo.
 
-La fonction $t est utilisée pour traduire les textes.
+La fonction `$t` est utilisée pour traduire les textes.
 
 Les champs réactifs (const listTasks: ITodoItem[] = reactive([]);, const newTaskName = ref(''); et const formValid = ref(false);) sont définis pour stocker les tâches, le nom de la nouvelle tâche et l'état de validité du formulaire.
 

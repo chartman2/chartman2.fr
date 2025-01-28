@@ -9,7 +9,7 @@
         icon="i-mdi:book-open-variant-outline"
       />
 
-      <v-row class="d-flex justify-space-around">
+      <v-row class="d-flex justify-space-around" v-if="articles">
         <v-col
           v-for="({ title, description, icon, color, article_id }, i) in articles"
           :key="i"
@@ -22,9 +22,10 @@
             min-height="480"
             max-height="480"
             color="secondary-container"
+            variant="outlined"
+            v-aos="['animate__flipInX']"
           >
             <v-icon
-              role="img"
               size="280"
               :icon="icon"
               :color="color"
@@ -37,7 +38,7 @@
             <v-card-text class="title font-weight-light mb-5">
               <v-sheet
                 :height="30"
-                color="secondary-container"
+                color="background"
               >
                 {{ description }}
               </v-sheet>
@@ -66,13 +67,5 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { data: articles } = await useAsyncData('home', () => queryContent()
-  .where({
-    _path: {
-      $contains: '/articles/' + route.params.id,
-    },
-  })
-  .only(['_path', '_id', 'title', 'icon', 'description', 'color', 'article_id'])
-  .find(),
-)
+const { data: articles } = await useAsyncData('content', () => queryCollection(route.params.id).all())
 </script>

@@ -29,11 +29,12 @@ tasks:
   f-restart:
     desc: Redémarrage du service frontend-dev
     cmds:
-      - docker compose -f docker-compose.dev.yml restart frontend-dev
+      - docker compose -f docker-compose.dev.yml down frontend-dev
+      - docker compose -f docker-compose.dev.yml up -d frontend-dev
   f-ssh:
     desc: Connexion SSH au frontend
     cmds:
-      - docker compose exec frontend-dev sh
+      - docker compose -f docker-compose.dev.yml exec frontend-dev sh
   prod-build:
     desc: Build du frontend de production
     cmds:

@@ -10,7 +10,7 @@
         left
         :icon="icon"
       />
-      <span class="text-h6 font-weight-light align-center pl-2">
+      <span class="text-h6 font-weight-bold align-center pl-2">
         {{ props.title }}
       </span>
     </v-col>

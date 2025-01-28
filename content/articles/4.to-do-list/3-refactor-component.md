@@ -2,6 +2,7 @@
 title: 'To-do list App'
 description: 'Refactor'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
+color: 'black'
 article_id: '3-to-do-list-refactor'
 ---
 

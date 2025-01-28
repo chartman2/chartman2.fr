@@ -1,12 +1,12 @@
 <template>
   <v-toolbar
-    flat
     color="info-container"
+    rounded="lg"
   >
     <v-btn
       variant="tonal"
       color="info"
-      class="mr-2"
+      class="ml-6"
       @click="$router.back()"
     >
       <v-icon icon="i-mdi:arrow-left-circle" />
@@ -14,6 +14,7 @@
     <v-btn
       to="/"
       variant="tonal"
+      class="ml-6"
       color="info"
     >
       <v-icon icon="i-mdi-home" />
@@ -25,7 +26,8 @@
       v-if="route.name != 'articles'"
       to="/articles"
       variant="tonal"
-      color="info"
+      color="primary"
+      class="mr-6"
     >
       <v-icon icon="i-mdi:book-open-variant-outline" />
     </v-btn>

@@ -5,7 +5,7 @@
 
       <page-title
         class="py-12"
-        :title="article.title"
+        :title="article.title ?? $t('article.unknow')"
         icon="i-mdi:book-open-variant-outline"
       />
       <v-responsive class="text-left">
@@ -14,23 +14,16 @@
           elevation="4"
           min-height="30"
           rounded
-          color="on-primary-container"
+          color="background"
           width="100%"
         >
-          <!DOCTYPE html>
-          <html
-            id="someselector"
-            :class="storeThemeDark === false ? 'light' : 'dark'"
-            style="overflow-y: initial"
-            lang="fr"
-            xml:lang="fr"
-          >
-            <ContentDoc
-              class="someselector"
-              :path="article._path"
-              style="width: 85vw;overflow-x: auto; white-space: nowrap;padding: revert;margin: revert;"
+          <ClientOnly>
+            <ContentRenderer
+              class="w-100"
+              v-if="article"
+              :value="article"
             />
-          </html>
+          </ClientOnly>
         </v-sheet>
       </v-responsive>
     </v-container>
@@ -38,22 +31,10 @@
 </template>
 
 <script setup lang="ts">
-import { useApplicationStore } from '~/stores/application'
-
 const route = useRoute()
-const applicationStore = useApplicationStore()
-const storeThemeDark = computed(() => applicationStore.isDarkTheme)
-const { data: article } = await useAsyncData('home', () => queryContent()
-  .where({
-    article_id: route.params.id,
-  })
-  .only(['_path', 'title'])
-  .findOne())
+
+const { data: article } = await useAsyncData('content', () => queryCollection('content')
+  .where('article_id', '=', route.params.id)
+  .first())
 </script>
 
-<style scoped>
-.someselector > * {
-  padding: revert;
-  margin: revert;
-}
-</style>
