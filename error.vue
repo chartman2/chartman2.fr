@@ -3,6 +3,7 @@
   import * as Sentry from "@sentry/nuxt"
 
   const applicationStore = useApplicationStore()
+  const config = useRuntimeConfig()
   const nuxtApp = useNuxtApp()
   const { mobile } = useDisplay()
   const theme = useTheme()
@@ -27,20 +28,26 @@
     error: Object as () => NuxtError
   })
 
-  const triggerError = () => {
-    throw new Error("Nuxt Button Error");
-  };
-
-  const getSentryData = () => {
+  if (config.public.environment !== "development") {
     Sentry.startSpan(
       {
-        name: "Example Frontend Span",
-        op: "test",
+        name: "Error",
+        op: error.statusCode,
+        scope: error.fatal
       },
       async () => {
-        await $fetch("/api/sentry-example-api")
+        await $fetch("/api/sentry-api", 
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ 
+            name: "Error",
+            op: error.statusCode,
+            scope: error.fatal
+          }),
+        )
       },
-    );
+    )
   }
 
 </script>
