@@ -1,9 +1,7 @@
 <script setup lang="ts">
   import type { NuxtError } from '#app'
-  import * as Sentry from "@sentry/nuxt"
 
   const applicationStore = useApplicationStore()
-  const config = useRuntimeConfig()
   const nuxtApp = useNuxtApp()
   const { mobile } = useDisplay()
   const theme = useTheme()
@@ -27,20 +25,6 @@
   const props = defineProps({
     error: Object as () => NuxtError
   })
-
-  if (config.public.environment !== "development") {
-    Sentry.startSpan(
-      {
-        name: "Error",
-        op: error.statusCode,
-        scope: error.fatal
-      },
-      async () => {
-        await $fetch("/api/sentry-api")
-      },
-    )
-  }
-
 </script>
 
 <template>

@@ -1,9 +1,8 @@
 <script setup>
-  import * as Sentry from "@sentry/nuxt";
+  import * as Sentry from "@sentry/nuxt"
 
   const triggerError = () => {
-    console.log('error')
-    throw new Error("Nuxt Button Error");
+    throw new Error("Nuxt Button Error")
   };
 
   const getSentryData = () => {
@@ -13,9 +12,9 @@
         op: "test",
       },
       async () => {
-        await $fetch("/api/sentry-example-api")
+        await $fetch("/api/sentry-api")
       },
-    );
+    )
   }
 
 </script>
