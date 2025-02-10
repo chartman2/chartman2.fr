@@ -6,8 +6,9 @@
     >
       <v-img
         :min-height="mobile ? '45vh' : '70vh'"
-        src="/backgrounds/hero-2.svg"
-        contain
+        :max-height="mobile ? '45vh' : '70vh'"
+        src="/backgrounds/forest.jpg"
+        cover
       >
         <v-container
           class="d-flex align-self-center pt-12"
@@ -47,6 +48,10 @@
             />
           </v-row>
         </v-container>
+        <NuxtParticles
+          id="tsparticles"
+          :options="options"
+        />
       </v-img>
     </v-card>
   </ClientOnly>
@@ -54,4 +59,51 @@
 
 <script setup>
 const { mobile } = useDisplay()
+const options = {
+  fullScreen: false,
+  fpsLimit: 60,
+  particles: {
+    number: {
+      value: 15,
+      density: {
+        enable: true,
+        value_area: mobile ? '40vh' : '65vh',
+      },
+    },
+    shape: {
+      type: 'circle',
+    },
+    preset: 'firefly',
+    color: {
+      value: '#CCCC66',
+    },
+    life: {
+      duration: {
+        value: 5,
+        sync: false,
+      },
+      count: 105,
+    },
+    opacity: {
+      value: { min: 0.1, max: 1 },
+      animation: {
+        enable: true,
+        speed: 3,
+      },
+    },
+    size: {
+      value: {
+        min: 3,
+        max: 6,
+      },
+    },
+    move: {
+      enable: true,
+      speed: 3,
+      random: false,
+      size: true,
+    },
+    retina_detect: true,
+  },
+}
 </script>

@@ -23,14 +23,15 @@
             v-for="({ type, src, title: skillTitle, text: skillText }, iSkill) in skill"
             :key="iSkill"
             cols="12"
-            md="3"
+            md="4"
           >
             <v-card
               v-aos="['animate__flipInY']"
               :data-aos-delay="`0.` + ((iSkills + 1) * (iSkill + 1) * 5) + `s`"
               class="py-12 px-4"
-              color="secondary-container"
-              flat
+              color="on-info-container"
+              variant="outlined"
+              rounded="xl"
               max-height="300"
               min-height="300"
             >
@@ -91,19 +92,19 @@ const skills = reactive([
         type: 'icon',
         src: 'i-mdi:vuejs',
         title: 'VueJS',
-        text: 'Progressive JavaScript framework',
+        text: 'Progressive JavaScript framework open-source pour créer des applications web progressives et interactives.',
       },
       {
         type: 'icon',
         src: 'i-mdi:nuxt',
         title: 'NuxtJS',
-        text: 'Frontend framework',
+        text: 'Framework Vue.js dédié à la création d’applications web, il propose un modèle de développement basé sur les routes, des fonctionnalités de pré-réglage pour les applications et une intégration avec les bibliothèques tels que Pinia et Vue Router.',
       },
       {
         type: 'icon',
         src: 'i-mdi:vuetify',
         title: 'Vuetify',
-        text: 'Material design framework',
+        text: 'Framework UI/UX open-source pour Vue.js, offrant une collection de composants Material Design et des fonctionnalités avancées pour créer des applications web modernes et réactives.',
       },
     ],
   },
@@ -115,34 +116,40 @@ const skills = reactive([
         type: 'icon',
         src: 'i-mdi:language-ruby',
         title: 'Ruby',
-        text: 'Dynamic language',
+        text: 'Langage de programmation dynamique, interprété et orienté objet. Sa syntaxe est simple et readable, il propose des fonctionnalités telles que la programmation procédurale et objet, les métaprogrammations.',
       },
       {
         type: 'icon',
         src: 'i-mdi:language-ruby-on-rails',
         title: 'Ruby on Rails',
-        text: 'Web framework',
+        text: 'framework web open-source écrit en Ruby, également connu sous le nom de Rails. Il propose un modèle de développement MVC (Modèle-Vue-Contrôleur) pour créer des applications web rapides et sécurisées, la Convention over Configuration, et le Don’t Repeat Yourself (DRY)',
+      },
+      {
+        type: 'icon',
+        src: 'i-mdi:language-php',
+        title: 'PHP',
+        text: 'Langage de programmation web open-source, interprété et dynamique. Il propose une syntaxe simple et flexible.',
       },
       {
         type: 'icon',
         src: 'i-mdi:laravel',
         title: 'Laravel',
-        text: 'Web framework',
+        text: 'Framework PHP populaire et facile à utiliser pour la création d’applications web modernes. Il propose une architecture modulaire, des fonctionnalités de sécurité et de validation intégrées, ainsi que des outils tels que Eloquent (un ORM) et Blade (un moteur de templating). Laravel est souvent considéré comme l’un des frameworks PHP les plus faciles à apprendre et à utiliser',
       },
       {
         type: 'icon',
         src: 'i-mdi:symfony',
         title: 'Symfony',
-        text: 'Web framework',
+        text: 'Framework PHP avancé pour la création d’applications web réactives et scalables. Il propose une architecture modulaire, des fonctionnalités de sécurité et de validation robustes, ainsi que des intégrations avec les bases de données et les bibliothèques de gestion de sessions. Symfony est souvent considéré comme l’un des frameworks PHP les plus flexibles et les mieux adaptés aux applications complexes',
       },
       {
         type: 'icon',
         src: 'i-mdi:database',
         title: 'Database design',
-        text: 'MySQL / PostgreSQL',
+        text: 'Système de gestion de données structurées qui permet de stocker, de manipuler et de partager des informations de manière efficace. Les bases de données offrent plusieurs avantages (organisation et gestion des données - accès concurrentiel - recherche et récupération des données - sécurité des données). Les bases de données peuvent stocker différents types d’informations (données structurées MySQL/PostgreSQL - données non structurées MongoDB/Couchbase - données géographiques PostgreSQL avec l’extension PostGIS/GeoServer)',
       },
     ],
   },
-  CSkillsCICD
+  CSkillsCICD,
 ])
 </script>

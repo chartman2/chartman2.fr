@@ -26,7 +26,7 @@
                   icon="i-mdi:star"
                 />
               </div>
-  
+
               <v-btn
                 color="white"
                 :href="stat.url"

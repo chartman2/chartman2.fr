@@ -8,13 +8,14 @@
       md="4"
     >
       <v-card
+        v-aos="['animate__flipInX']"
         class="mx-auto"
-        max-width="300"
+        max-width="400"
         min-height="480"
         max-height="480"
         color="secondary-container"
         variant="outlined"
-        v-aos="['animate__flipInX']"
+        rounded="xl"
       >
         <v-icon
           v-if="type === 'icon'"
@@ -30,10 +31,8 @@
           size="300"
           :image="src"
         />
-        <v-card-title>
-          <div class="font-weight-black text-uppercase">
-            {{ title }}
-          </div>
+        <v-card-title class="font-weight-black text-uppercase text-secondary">
+          {{ title }}
         </v-card-title>
         <v-card-text class="title font-weight-light mb-5">
           <v-sheet
@@ -92,7 +91,7 @@ const articles = reactive([
   {
     type: 'icon',
     src: 'i-mdi:checkbox-marked-circle-plus-outline',
-    color: 'black',
+    color: 'secondary',
     title: 'To-do list',
     text: 'Construction d\'une To-do list.',
     link: '/blog/category/todolist',

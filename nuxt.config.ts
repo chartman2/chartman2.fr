@@ -17,15 +17,9 @@ export default defineNuxtConfig({
     '@dargmuesli/nuxt-cookie-control',
     'nuxt-resend',
     '@nuxt/image',
+    'nuxt-particles',
     process.env.APP_ENVIRONMENT === 'production' && '@sentry/nuxt/module',
   ],
-  runtimeConfig: {
-    public: {
-      appUrl: process.env.APP_URL,
-      appName: process.env.APP_NAME,
-      environment: process.env.APP_ENVIRONMENT,
-    },
-  },
   ssr: true,
   devtools: {
     enabled: true,
@@ -34,7 +28,6 @@ export default defineNuxtConfig({
       enabled: true,
     },
   },
-  sourcemap: { client: "hidden" },
   app: {
     head: {
       meta: [
@@ -81,7 +74,7 @@ export default defineNuxtConfig({
             // Theme used if `html.dark`
             dark: 'github-dark',
             // Theme used if `html.sepia`
-            sepia: 'monokai'
+            sepia: 'monokai',
           },
           langs: [
             'c',
@@ -96,10 +89,18 @@ export default defineNuxtConfig({
             'css',
             'vue',
           ],
-        }
+        },
       },
     },
   },
+  runtimeConfig: {
+    public: {
+      appUrl: process.env.APP_URL,
+      appName: process.env.APP_NAME,
+      environment: process.env.APP_ENVIRONMENT,
+    },
+  },
+  sourcemap: { client: 'hidden' },
   vite: { // @see https://github.com/nuxt/nuxt/issues/27558
     server: {
       hmr: {
@@ -156,13 +157,21 @@ export default defineNuxtConfig({
     defaultLocaleRouteNameSuffix: 'false',
     vueI18n: './i18n.config.ts', // if you are using custom path, default
   },
+  // css: [
+  //   // SCSS file in the project
+  //   "~/assets/forest.sass", // you should add main.scss somewhere in your app
+  // ],
+  particles: {
+    mode: 'full', // 'full' | 'slim' | 'basic' | 'custom'
+    lazy: true,
+  },
+  sentry: {
+    autoInjectServerSentry: 'experimental_dynamic-import',
+  },
   vuetify: {
     moduleOptions: {
       /* module specific options */
     },
     vuetifyOptions: './vuetify.config.ts',
-  },
-  sentry: {
-    autoInjectServerSentry: "experimental_dynamic-import",
   },
 })

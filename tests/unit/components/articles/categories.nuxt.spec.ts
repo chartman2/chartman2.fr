@@ -43,7 +43,7 @@ describe('Components - articles/categories', async () => {
       {
         type: 'icon',
         src: 'i-mdi:checkbox-marked-circle-plus-outline',
-        color: 'black',
+        color: 'secondary',
         title: 'To-do list',
         text: 'Construction d\'une To-do list.',
         link: '/blog/category/todolist',

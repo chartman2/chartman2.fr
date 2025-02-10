@@ -38,6 +38,7 @@ const props = defineProps({
     default: null
   },
   highlights: {
+    /* eslint-disable-next-line */
     type: Array as () => number[],
     default: () => []
   },

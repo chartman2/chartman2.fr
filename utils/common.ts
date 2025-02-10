@@ -94,31 +94,43 @@ export const CSkills = [
 
 export const CSkillsCICD = {
   title: 'CI/CD',
-  text: 'L\'intégration continue (CI) est un ensemble de pratiques utilisées en génie logiciel consistant à vérifier à chaque modification de code source que le résultat des modifications ne produit pas de régression dans l\'application développée. Le déploiement continu ou Continuous deployment (CD) en anglais, est une approche d\'ingénierie logicielle dans laquelle les fonctionnalités logicielles sont livrées fréquemment par le biais de déploiements automatisés.',
+  text: 'L\'intégration continue (CI) est un ensemble de pratiques utilisées en génie logiciel consistant à vérifier à chaque modification de code source que le résultat des modifications ne produit pas de régression dans l’application développée. Le déploiement continu ou Continuous deployment (CD) en anglais, est une approche d\'ingénierie logicielle dans laquelle les fonctionnalités logicielles sont livrées fréquemment par le biais de déploiements automatisés.',
   skill: [
     {
       type: 'image',
-      src: '/img/gitea.png',
-      title: 'Gitea',
-      text: 'Code hosting',
+      src: '/img/Forgejo_logo.svg',
+      title: 'Forgejo',
+      text: 'Système de gestion de projet et de code source open-source qui est un fork de Gitea. Il permet aux développeurs de gérer leurs projets, leurs codes sources et de collaborer avec d’autres membres d’équipe. Offrant des fonctionnalités telles que la création de repository, le suivi des changelogs, la gestion des issues',
     },
     {
       type: 'image',
       src: '/img/jenkins.png',
       title: 'Jenkins',
-      text: 'Automation',
+      text: 'Outil de build automation qui permet aux développeurs de automatiser les processus de construction, de test et de déploiement de leurs applications, grâce à la configuration de pipelines et le suivi des builds.',
     },
     {
       type: 'image',
       src: '/img/sonarqube.png',
       title: 'SonarQube',
-      text: 'Code quality and security',
+      text: 'Outil de qualité logicielle qui permet aux développeurs de mesurer et d’améliorer la qualité de leur code. Il offre des fonctionnalités telles que l’analyse de code, le suivi des règles de qualité et la détection des bugs.',
     },
     {
       type: 'image',
       src: '/img/openproject.jpg',
       title: 'Openproject',
-      text: 'Project managment',
+      text: 'Système de gestion de projet qui permet aux développeurs de gérer leurs projets (comme le suivi des tâches, la gestion des ressources) et de collaborer avec d’autres membres d’équipe.',
+    },
+    {
+      type: 'image',
+      src: '/img/coolify-transparent.svg',
+      title: 'Coolify',
+      text: 'Outil de build automation qui permet aux développeurs d’automatiser les processus de déploiement de leurs applications avec la configuration, le suivi des déploiements, des secrets, et rollback automatique.',
+    },
+    {
+      type: 'image',
+      src: '/img/glitchtip-g.png',
+      title: 'GlitchTip',
+      text: 'Outil de debugging qui permet aux développeurs de résoudre les problèmes de code en temps réel.',
     },
   ],
 }

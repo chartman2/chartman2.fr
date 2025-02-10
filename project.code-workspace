@@ -3,5 +3,8 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"vs-code-prettier-eslint.prettierLast": true
+	}
 }

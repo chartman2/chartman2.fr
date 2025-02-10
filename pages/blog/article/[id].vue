@@ -19,8 +19,8 @@
         >
           <ClientOnly>
             <ContentRenderer
-              class="w-100"
               v-if="article"
+              class="w-100"
               :value="article"
             />
           </ClientOnly>
@@ -37,4 +37,3 @@ const { data: article } = await useAsyncData('content', () => queryCollection('c
   .where('article_id', '=', route.params.id)
   .first())
 </script>
-

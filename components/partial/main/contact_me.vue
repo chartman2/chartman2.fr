@@ -6,7 +6,6 @@
     >
       <section-title title="Contactez moi" />
       <client-only>
-
         <v-responsive>
           <v-form
             ref="form"

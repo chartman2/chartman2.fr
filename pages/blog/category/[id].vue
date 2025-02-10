@@ -9,7 +9,10 @@
         icon="i-mdi:book-open-variant-outline"
       />
 
-      <v-row class="d-flex justify-space-around" v-if="articles">
+      <v-row
+        v-if="articles"
+        class="d-flex justify-space-around"
+      >
         <v-col
           v-for="({ title, description, icon, color, article_id }, i) in articles"
           :key="i"
@@ -17,13 +20,13 @@
           md="4"
         >
           <v-card
+            v-aos="['animate__flipInX']"
             class="mx-auto"
             max-width="300"
             min-height="480"
             max-height="480"
             color="secondary-container"
             variant="outlined"
-            v-aos="['animate__flipInX']"
           >
             <v-icon
               size="280"
