@@ -79,13 +79,13 @@ const options = {
     },
     life: {
       duration: {
-        value: 5,
+        value: 12,
         sync: false,
       },
       count: 105,
     },
     opacity: {
-      value: { min: 0.1, max: 1 },
+      value: { min: 0.1, max: 2 },
       animation: {
         enable: true,
         speed: 3,
@@ -93,14 +93,14 @@ const options = {
     },
     size: {
       value: {
-        min: 3,
-        max: 6,
+        min: 1,
+        max: 4,
       },
     },
     move: {
       enable: true,
-      speed: 3,
-      random: false,
+      speed: 7,
+      random: true,
       size: true,
     },
     retina_detect: true,
