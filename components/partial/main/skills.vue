@@ -21,12 +21,13 @@
         <v-row class="d-flex justify-space-around mt-2">
           <v-col
             v-for="({ type, src, title: skillTitle, text: skillText }, iSkill) in skill"
+            v-aos="['animate__fadeIn']"
             :key="iSkill"
             cols="12"
             md="4"
           >
             <v-card
-              v-aos="['animate__flipInY']"
+              v-aos="['animate__lightSpeedInLeft']"
               :data-aos-delay="`0.` + ((iSkills + 1) * (iSkill + 1) * 5) + `s`"
               class="py-12 px-4"
               color="on-info-container"

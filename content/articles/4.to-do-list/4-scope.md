@@ -2,11 +2,11 @@
 title: 'To-do list App'
 description: 'Scopes'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
-color: 'black'
+color: 'secondary'
 article_id: '4-to-do-list-scope'
 ---
 
-Maintenant que nous avons nos tâches, nous allons rajouter un context (scope) pour les filtrer.
+Maintenant que nous avons nos tâches, rajoutons un context (scope) pour les filtrer.
 
 Dans un premier temps définissons nos contextes :
  - Personnel
@@ -14,9 +14,9 @@ Dans un premier temps définissons nos contextes :
  - Famille
  - Autre
 
- Pour cela, créons le fichier *types/scope.ts*
+ Pour cela, créons le type scope
 
- ```ts
+ ```ts [types/scope.ts]
 export type IScope = 'personnal' | 'work' | 'family' | 'other'
 
 export const scopeValues: IScope[] = [
@@ -27,9 +27,9 @@ export const scopeValues: IScope[] = [
 ]
  ```
 
-Implémentons ce type dans notre *types/todo.ts*
+Implémentons ce type 
 
-```ts
+```ts [types/todo.ts]
 import type { IScope } from "~/types/scope"
 
 export interface ITodoItem {
@@ -39,9 +39,9 @@ export interface ITodoItem {
 }
 ```
 
-Ainsi que dans notre fichier de traduction *i18n.config.ts*
+la traduction
 
-```ts
+```ts [i18n.config.ts]
   list: {
     title: 'Liste des tâches'
   },
@@ -55,9 +55,7 @@ Ainsi que dans notre fichier de traduction *i18n.config.ts*
 
 Il nous reste à modifier l'affichage dans la liste, et dans le formulaire
 
-*components/partial/todo/new.vue*
-
-```vue
+```vue [components/partial/todo/new.vue]
 <template>
   <v-form 
     @submit.prevent="addTask" 
@@ -126,9 +124,7 @@ const addTask = () => {
 
 ```
 
-*components/partial/todo/list.vue*
-
-```vue
+```vue [components/partial/todo/list.vue]
 <template>
   <v-row>
     <v-radio-group
@@ -203,7 +199,6 @@ watch(filterTaskScope, async (newFilter, oldFilter) => {
 </script>
 ```
 
-Dans cet article, nous avons réussi à mettre en œuvre une application de liste de tâches avec une fonction de filtrage du champ d'application. 
+Dans cet article, nous avons réussi à mettre en œuvre une application de liste de tâches avec une fonction de filtrage du champ d'application.
 
-
-
+Passons à la partie [backend](/blog/article/5-to-do-list-backend) (gestion des utilisateurs et stockage des tâches, scopes)

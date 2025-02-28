@@ -22,7 +22,7 @@
           <v-card
             v-aos="['animate__flipInX']"
             class="mx-auto"
-            max-width="300"
+            max-width="400"
             min-height="480"
             max-height="480"
             color="secondary-container"
@@ -34,7 +34,7 @@
               :color="color"
             />
             <v-card-title>
-              <div class="font-weight-black text-uppercase">
+              <div class="font-weight-black text-uppercase text-secondary">
                 {{ title }}
               </div>
             </v-card-title>

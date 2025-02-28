@@ -2,26 +2,28 @@
 title: 'To-do list App'
 description: 'Backend - Développement'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
-color: 'black'
+color: 'secondary'
 article_id: '6-to-do-list-backend-development'
 ---
 
-# Mise en place des utilisateurs et de la connexion api
+#### Mise en place des utilisateurs et de la connexion api
 
 
 Pour gérer les utilisateurs, nous allons utiliser Devise (https://github.com/heartcombo/devise#getting-started)
+
 Et devise-api pour la gestion Api (https://github.com/nejdetkadir/devise-api)
 
-## Installation
+##### Installation
 
 
 ```bash
 rails generate devise:install
 ```
 
-Editer le fichier `config/environments/development.rb`
+Editons la configuration de développement pour transférer les mails à [mailpit](/blog/article/5-docker-mailpit-init)
 
-```rb
+
+```rb [config/environments/development.rb]
 config.action_mailer.default_url_options = { host: 'mailpit.traefik.me', port: 1025 }
 ```
 
@@ -46,9 +48,10 @@ Lancer les migrations
 ```bash
 rails db:migrate
 ```
-Modification du modèle `User`
 
-```rb
+Pour appliquer toutes les modifications, modifions le modèle `User`
+
+```rb [app/models/user.rb]
 class User < ApplicationRecord
   devise :database_authenticatable, 
          :registerable, 
@@ -58,7 +61,14 @@ class User < ApplicationRecord
          :api # <--- Add this module
 end
 ```
-Routes
+
+##### Routes
+
+Affichons les routes pour voir un peu ce qu'il y a
+
+```sh
+rails routes
+```
  
 | Prefix   | Verb    | URI Pattern     | Controller#Action                          |
 |----------|---------|-----------------|-------------------------------------------|
@@ -68,9 +78,12 @@ Routes
 | sign_in_user_tokens| POST| /users/tokens/sign_in| devise/api/tokens#sign_in |
 | info_user_tokens| GET| /users/tokens/info| devise/api/tokens#info |
 
-Configuration
+##### Configuration
 
-```rb
+
+Devise crée un fichier de configuration pour nous aider, éditons le et modifions ce que nous voulons.
+
+```rb [config/initializers/devise.rb]
 # config/initializers/devise.rb
 Devise.setup do |config|
   config.api.configure do |api|
@@ -118,18 +131,18 @@ Devise.setup do |config|
 end
 ```
 
-## Génération de la table scope
+##### Génération de la table scope
 
-Création du modèle et de la migration de base de données
+Créons le modèle et de la migration de base de données afin de gérer nos scopes
 
 ```sh
 rails generate model Todo::Scope
 rails generate migration CreateTodoScopes
 ```
 
-Créer le fichier `app/models/todo.rb` pour préfixer les tables pour le namespace `Todo::`
+Créer le fichier pour préfixer les tables pour le namespace `Todo::`
 
-```ruby
+```ruby [app/models/todo.rb]
 # frozen_string_literal: true
 
 # This module sets a table name prefix for the User model. The prefix "users_" will be added to all database
@@ -142,9 +155,9 @@ module Todo
 end
 ```
 
-Créer les validations pour le modèle scope
+Modifions le modèle scope pour rajouter les validations.
 
-```ruby
+```ruby [app/models/todo/scope.rb]
 # == Schema Information
 #
 # Table name: todo_scopes
@@ -174,9 +187,10 @@ module Todo
 end
 ```
 
-Modifier le fichier de migration pour ajouter les champs `name` et `nickname`
+Modifions le fichier de migration pour ajouter les champs `name` et `nickname`
 
-```ruby
+
+```ruby [db/migrate/xxx_scopes.rb]
 class Scopes < ActiveRecord::Migration[7.0]
   def change
     create_table :todo_scopes do |t|
@@ -189,14 +203,14 @@ class Scopes < ActiveRecord::Migration[7.0]
 end
 ```
 
-De la même manière on créer le modèle et la migation pour les items
+De la même manière,créons le modèle et la migation pour les items
 
 ```sh
 rails generate model Todo::Item
 rails generate migration CreateTodoItems
 ```
 
-```ruby
+```ruby [db/migrate/xxx_items.rb]
 class Items < ActiveRecord::Migration[7.0]
   def change
     create_table :todo_items do |t|
@@ -211,7 +225,7 @@ class Items < ActiveRecord::Migration[7.0]
 end
 ```
 
-```ruby
+```ruby [app/models/todo/item.rb]
 # == Schema Information
 #
 # Table name: todo_items
@@ -258,9 +272,9 @@ end
 Maintenant que nous avons nos modèles mis en place,
 Mettons les contrôleurs et services pour les gérer.
 
-Créer le fichier `app/controllers/api/v1/todo/scopes_controller.rb`
+###### Création du contrôleur
 
-```ruby
+```ruby [app/controllers/api/v1/todo/scopes_controller.rb]
 module Api
   module V1
     module Todo
@@ -309,9 +323,11 @@ module Api
 end
 ```
 
-Gestion des servics `app/services/application_callable.rb`
+###### Gestion des services 
 
-```ruby
+* Petit fichier pour la gestion des services.
+
+```ruby [app/services/application_callable.rb]
 # frozen_string_literal: true
 
 # The ApplicationCallable class provides a generic interface for calling objects with parameters.
@@ -326,9 +342,9 @@ class ApplicationCallable
 end
 ```
 
-Créer le fichier `app/services/v1/todo/scopes/create_service.rb`
+* Créer le service de création
 
-```ruby
+```ruby [app/services/v1/todo/scopes/create_service.rb]
 # frozen_string_literal: true
 
 module V1
@@ -355,9 +371,9 @@ module V1
   end
 end
 ```
-Créer le fichier `app/services/v1/todo/scopes/update_service.rb`
+ * Service de mise à jour
 
-```ruby
+```ruby [app/services/v1/todo/scopes/update_service.rb]
 module V1
   module Todo
     module Scopes
@@ -385,9 +401,9 @@ module V1
 end
 ```
 
-Créer le fichier `app/services/v1/todo/scopes/destroy_service.rb`
+* Service de destruction
 
-```ruby
+```ruby [app/services/v1/todo/scopes/destroy_service.rb]
 module V1
   module Todo
     module Scopes
@@ -411,9 +427,9 @@ module V1
 end
 ```
 
-Créer le fichier `app/controllers/api/v1/todo/items_controller.rb`
+* Contrôleur
 
-```ruby
+```ruby [app/controllers/api/v1/todo/items_controller.rb]
 module Api
   module V1
     module Todo
@@ -472,9 +488,8 @@ end
 
 Les services associés 
 
-`app/services/v1/todo/items/create_service.rb`
 
-```ruby
+```ruby [app/services/v1/todo/items/create_service.rb]
 # frozen_string_literal: true
 
 module V1
@@ -511,9 +526,8 @@ module V1
 end
 ```
 
-`app/services/v1/todo/items/update_service.rb`
-
-```ruby
+```ruby [app/services/v1/todo/items/update_service.rb]
+# frozen_string_literal: true
 
 module V1
   module Todo
@@ -541,9 +555,7 @@ module V1
 end
 ```
 
-`app/services/v1/todo/items/destroy_service.rb`
-
-```ruby
+```ruby [app/services/v1/todo/items/destroy_service.rb]
 # frozen_string_literal: true
 
 module V1
@@ -569,9 +581,9 @@ module V1
 end
 ```
 
-Ajoutons les routes `config/routes.rb`
+Ajoutons les routes afin de pouvoir accéder aux actions de nos contrôleurs
 
-```ruby
+```ruby [config/routes.rb]
 Rails.application.routes.draw do
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -598,3 +610,6 @@ Rails.application.routes.draw do
   end
 end
 ```
+
+Nous avons mis en place notre gestion des données,
+Il nous reste plus qu'à connecter notre [frontend à notre backend](/blog/article/7-to-do-list-frontend-backend).

@@ -2,18 +2,21 @@
 title: 'To-do list App'
 description: 'Frontend-backend'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
-color: 'black'
+color: 'secondary'
 article_id: '7-to-do-list-frontend-backend'
 ---
 
-Nous pouvons maintenant connecter le frontend avec le backend
+Nous pouvons maintenant connecter le frontend avec le backend.
 
-Modification du frontend : 
+#### Modification du frontend
 
-Ajout de la connexion au backend et les requêtes associées
+Nous allons ajouter des plugins pour l'ajout de la connexion au backend et les requêtes associées, des services et procédures de notre frontend.
 
-Création des plugins 
-`plugins/appApi.ts`
+##### Création des plugins 
+
+Nous créons 3 plugins au chargement de Nuxt.
+
+* Un premier pour charger les fichiers d'APIs (connexion, chargement des items...)
 
 ```js [plugins/appApi.ts] meta-info=val
 export default defineNuxtPlugin((nuxtApp) => {
@@ -40,9 +43,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-`plugins/appProcedure.ts`
+* Le plugin pour le chargement des procéduures (service appelant d'autres services)
 
-```js
+```js [plugins/appProcedure.ts]
 export default defineNuxtPlugin((nuxtApp) => {
   // @ts-ignore
   const modulesToImport = import.meta.glob('../src/procedures/**/*.ts')
@@ -67,9 +70,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-`plugins/appService.ts`
+* Le derniers pour le chargement des services.
 
-```js
+
+```js [plugins/appService.ts]
 export default defineNuxtPlugin((nuxtApp) => {
   // @ts-ignore
   const modulesToImport = import.meta.glob('../src/services/**/*.ts')
@@ -94,9 +98,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-`src/appService.ts`
-
-```ts
+```ts [src/appService.ts]
 class AppService {
   protected nuxtApp: any
 
@@ -107,9 +109,10 @@ class AppService {
 
 export default AppService
 ```
-`src/services/common/apiErrors.ts`
 
-```ts
+* Créons un service pour gérer les erreurs
+
+```ts [src/services/common/apiErrors.ts]
 import AppService from "~/src/appService";
 
 class ApiErrors extends AppService {
@@ -143,9 +146,10 @@ class ApiErrors extends AppService {
 export default ApiErrors
 ```
 
-`src/services/common/httpCodes.ts`
+ * On crée un service pour gérer les codes `http` backend.
 
-```ts
+
+```ts [src/services/common/httpCodes.ts]
 import AppService from "~/src/appService"
 import { StatusCode1xx, StatusCode2xx, StatusCode3xx, StatusCode4xx, StatusCode5xx } from "~/types/common"
 
@@ -177,9 +181,10 @@ class HttpCodesModule extends AppService {
 export default HttpCodesModule
 ```
 
-`src/services/todo/items.ts`
+* Création du service pour la gestion des `items`
 
-```ts
+
+```ts [src/services/todo/items.ts]
 import AppService from '~/src/appService'
 import { useTodoStore } from '~/stores/todo'
 import type { ReturnedResponseType } from '~/types/common'
@@ -237,9 +242,10 @@ class ItemsModule extends AppService {
 export default ItemsModule
 ```
 
-`src/services/todo/scopes.ts`
+* Création du service pour la gestion des `scopes`
 
-```ts
+
+```ts [src/services/todo/scopes.ts]
 import AppService from '~/src/appService'
 import { useTodoStore } from '~/stores/todo'
 
@@ -297,9 +303,9 @@ class ScopesModule extends AppService {
 export default ScopesModule
 ```
 
-`src/services/users/auth.ts`
+* Création du service pour la gestion de l'authenfication
 
-```ts
+```ts [src/services/users/auth.ts]
 import AppService from '~/src/appService'
 import { useApplicationStore } from '~/stores/application'
 import type { ReturnedResponseType } from '~/types/common'
@@ -325,9 +331,10 @@ class AuthModule extends AppService {
 export default AuthModule
 ```
 
-`src/services/users/user.ts`
+* Création du service pour la gestion des `utilisateurs`
 
-```ts
+
+```ts [src/services/users/user.ts]
 import AppService from "~/src/appService"
 import type { ReturnedResponseType } from "~/types/common"
 
@@ -348,9 +355,10 @@ class UserModule extends AppService {
 export default UserModule
 ```
 
-`src/procedures/auth.ts`
+* Création de la procédure d'authentification
 
-```ts
+
+```ts [src/procedures/auth.ts]
 import AppFactory from '~/src/appService'
 import type { ReturnedResponseType } from "~/types/common"
 
@@ -373,9 +381,9 @@ class AuthModule extends AppFactory {
 export default AuthModule
 ```
 
-`src/apis/apiService.ts`
+* Création du service pour la gestion des `apis`
 
-```ts
+```ts [src/apis/apiService.ts]
 // @ts-nocheck
 import { useStorage, createFetch } from '@vueuse/core'
 import type { RemovableRef } from '@vueuse/core'
@@ -545,9 +553,9 @@ class ApiService {
 export default ApiService
 ```
 
-`src/apis/modules/auth.ts`
+* Création de l'api pour l'authenfication
 
-```ts
+```ts [src/apis/modules/auth.ts]
 import ApiService from '~/src/apis/apiService'
 import type { IFetchResponse } from '~/types/common'
 import type { ILoginInput } from '~/types/auth/log_in'
@@ -601,9 +609,9 @@ class AuthModule extends ApiService {
 export default AuthModule
 ```
 
-`src/apis/modules/items.ts`
+* Création de l'api pour la gestion des `items`
 
-```ts
+```ts [src/apis/modules/items.ts]
 import ApiService from '~/src/apis/apiService'
 import type { IFetchResponse } from '~/types/common'
 
@@ -632,9 +640,9 @@ class ItemsModule extends ApiService {
 export default ItemsModule
 ```
 
-`src/apis/modules/scope.ts`
+* Création de l'api pour la gestion des `scopes`
 
-```ts
+```ts [src/apis/modules/scope.ts]
 import ApiService from '~/src/apis/apiService'
 import type { IFetchResponse } from '~/types/common'
 
@@ -663,9 +671,10 @@ class ScopesModule extends ApiService {
 export default ScopesModule
 ```
 
-`stores/application.ts`
+* Création du store pour l'application
 
-```ts
+
+```ts [stores/application.ts]
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import type { IStatus } from '~/types/snackbar/type'
 import type { IUserResponse } from '~/types/user'
@@ -725,10 +734,11 @@ if (Object.hasOwn(import.meta, 'hot')) {
 }
 ```
 
-`stores/todo.ts`
+* Création du store pour les items et les scopes (notre Todo)
 
-```ts
 
+
+```ts [stores/todo.ts]
 import { defineStore, acceptHMRUpdate } from 'pinia'
 import type { IItemData, IScopeData } from '~/types/todo'
 
@@ -762,9 +772,9 @@ if (Object.hasOwn(import.meta, 'hot')) {
 }
 ```
 
-`types/user.ts`
+* Création du type `utilisateur`
 
-```ts
+```ts [types/user.ts]
 export interface IUserResponse {
   "token": string,
   "refresh_token": string,
@@ -786,9 +796,9 @@ export interface UserData {
 }
 ```
 
-`types/todo.ts`
+* Création du type `todo`, `scope`, `item`
 
-```ts
+```ts [types/todo.ts]
 export type IScopeAttribute = {
   id: number
   name: string
@@ -824,9 +834,9 @@ export type IITemApiResponse = {
 }
 ```
 
-`types/common.ts`
+* Création des types communs - `response`, `statuts` ...
 
-```ts
+```ts [types/common.ts]
 // import { RemovableRef } from "@vueuse/core"
 
 export type stringFunction = (name: string | null) => string;
@@ -918,11 +928,11 @@ export const StatusCode5xx = {
 }
 ```
 
-Application des changements dans les pages
+##### Application des changements dans les pages
 
-`middleware/auth.ts`
+* Création du middleware pour contrôleur l'accès à notre Todo (utilisateur authentifié)
 
-```ts
+```ts [middleware/auth.ts]
 import { useApplicationStore } from '~/stores/application'
 
 export default defineNuxtRouteMiddleware(async (to) => {
@@ -950,9 +960,8 @@ export default defineNuxtRouteMiddleware(async (to) => {
 })
 ```
 
-`pages/index.vue`
 
-```vue
+```vue [pages/index.vue]
 <template>
   <v-row class="d-flex align-self-start py-12">
     <v-container>
@@ -977,9 +986,9 @@ export default defineNuxtRouteMiddleware(async (to) => {
 </script>
 ```
 
-`pages/log_in.vue`
+* Création de la page de connexion
 
-```vue
+```vue [pages/log_in.vue]
 <template>
   <v-row class="d-flex align-self-start py-12">
     <v-container class="py-12">
@@ -993,7 +1002,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
   </v-row>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const { $procedures, $api } = useNuxtApp()
 const snackbar = useSnackbar()
 const { t } = useI18n()
@@ -1003,12 +1012,12 @@ const onSignIn = async (email, password) => {
   const result = await $procedures.auth.signIn(email.value, password.value)
   const router = useRouter()
 
-  let text = t('auth.failed')
+  let text = t("auth.failed")
 
   if (result.success) {
-    text = t('auth.successed') 
+    text = t("auth.successed")
 
-    router.push({ path: '/' })
+    router.push({ path: "/" })
   }
 
   snackbar.add({
@@ -1017,12 +1026,14 @@ const onSignIn = async (email, password) => {
     text: text
   })
 }
+
 </script>
+`
 ```
 
-`pages/todo.vue`
+* Modification de la page Todo 
 
-```vue
+```vue [pages/todo.vue]
 <template>
   <v-row class="d-flex align-self-start py-12">
     <v-container>
@@ -1128,9 +1139,9 @@ const checkResults = (result: ReturnedResponseType, successed: string, failed: s
 </script>
 ```
 
-`components/partial/todo/list.vue`
+* Modification de la liste
 
-```vue
+```vue [components/partial/todo/list.vue]
 <template>
   <v-row>
     <v-radio-group
@@ -1213,9 +1224,10 @@ const getScopeNicknameFromItem = (scopeId: number) => {
 </script>
 ```
 
-`components/partial/todo/new.vue`
+* Modification du formulaire 
 
-```vue
+
+```vue [components/partial/todo/new.vue]
 <template>
   <v-form 
     @submit.prevent="addTask" 
@@ -1280,3 +1292,9 @@ const addTask = () => {
 }
 </script>
 ```
+
+Nous avons créé une petite application Todo, rapidement, qui peut être largement améliorée.
+
+Les plugins peuvent être migrés vers des composables.
+
+Voilà pour cette série d'article sur une petite ToDo Liste.

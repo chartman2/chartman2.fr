@@ -2,15 +2,25 @@
 title: 'To-do list App'
 description: 'Tâches'
 icon: 'i-mdi:checkbox-marked-circle-plus-outline'
-color: 'black'
+color: 'secondary'
 article_id: '2-to-do-list-taches'
 ---
 
-# Tâches
+Hello,
 
-Nous allons créer un composant pour ajouter une nouvelle tâche à notre liste
+Dans cet article, explorons la création de nos tâches.
 
-Dans un premier temps, configurons le fichier de traduction **i18n.config.ts**
+
+En premier, nous allons configurer les textes en fonction de la langue, puis définir le type de nos tâches (le nom et l'état),
+
+
+l'affiche de la liste de nos tâches, et le formulaire nous permettant de créer une tâche.
+
+#### Tâches
+
+##### Gestion des langues
+
+Dans un premier temps, configurons le fichier de traduction.
 
 ```ts [i18n.config.ts]
 export default defineI18nConfig(() => ({
@@ -56,11 +66,13 @@ export default defineI18nConfig(() => ({
 }))
 ```
 
+##### Gestion du type
+
 Une tâche est composée de deux attributs :
  * name : une chaîne de caractère 
  * done : un booléen
 
-Contruisons le type correspondant **types/todo.ts**
+Contruisons le type correspondant.
 
 ```ts [types/todo.ts]
 export interface ITodoItem {
@@ -68,6 +80,9 @@ export interface ITodoItem {
   done: boolean
 }
 ```
+
+##### Affichage de la liste de nos tâches
+
 
 Créons un composant pour le titre avec un propriété **title** de type string.
 
@@ -98,7 +113,9 @@ const props = defineProps({
 </script>
 ```
 
-A partir de là, définissons notre composant pour gérer nos tâches (**components/partial/todo/list.vue**)
+##### Formulaire d'une nouvelle tâche
+
+A partir de là, définissons notre composant pour gérer nos tâches.
 
 ```vue [components/partial/todo/list.vue]
 <template>
@@ -178,42 +195,42 @@ const performTask = (key: number) => {
 
 </script>
 ```
-Template (HTML)
+###### Template (HTML)
 
 
 Le template est divisé en trois parties : une section titre, un formulaire et une liste de tâches.
 
 
 
-La première partie `<section-title :title="$t('tasks.form.title')"/>` définit un élément `<section-title>` avec un attribut :title qui contient le texte traduit à l'aide de la fonction $t. Ce texte est défini dans le fichier de traduction (par exemple, tasks.form.title).
+* La première partie `<section-title :title="$t('tasks.form.title')"/>` définit un élément `<section-title>` avec un attribut :title qui contient le texte traduit à l'aide de la fonction $t. Ce texte est défini dans le fichier de traduction (par exemple, tasks.form.title).
 
-Le formulaire (`<v-form @submit.prevent="addTask" v-model="formValid">`) permet d'ajouter une nouvelle tâche. Lorsqu'on soumet le formulaire, la fonction addTask est appelée.
+* Le formulaire (`<v-form @submit.prevent="addTask" v-model="formValid">`) permet d'ajouter une nouvelle tâche. Lorsqu'on soumet le formulaire, la fonction addTask est appelée.
 
-La liste de tâches (`<v-row v-for="(task, key) in listTasks" :key="key">`) affiche chaque tâche avec son nom et un bouton pour marquer la tâche comme terminée.
+* La liste de tâches (`<v-row v-for="(task, key) in listTasks" :key="key">`) affiche chaque tâche avec son nom et un bouton pour marquer la tâche comme terminée.
 
 
-Script (TS)
+###### Script (TS)
 
 
 Le script est divisé en plusieurs parties :
 
 
 
-Les imports (import type { ITodoItem } from '~/types/todo';) importent le type ITodoItem défini dans le fichier ~/types/todo.
+* Les imports (import type { ITodoItem } from '~/types/todo';) importent le type ITodoItem défini dans le fichier ~/types/todo.
 
-La fonction `$t` est utilisée pour traduire les textes.
+* La fonction `$t` est utilisée pour traduire les textes.
 
-Les champs réactifs (const listTasks: ITodoItem[] = reactive([]);, const newTaskName = ref(''); et const formValid = ref(false);) sont définis pour stocker les tâches, le nom de la nouvelle tâche et l'état de validité du formulaire.
+* Les champs réactifs (const listTasks: ITodoItem[] = reactive([]);, const newTaskName = ref(''); et const formValid = ref(false);) sont définis pour stocker les tâches, le nom de la nouvelle tâche et l'état de validité du formulaire.
 
-Les règles de validation (const rules = reactive([ (value: string) => { ... } ]);) sont définies pour valider le champ du nom de la tâche.
+* Les règles de validation (const rules = reactive([ (value: string) => { ... } ]);) sont définies pour valider le champ du nom de la tâche.
 
-Les fonctions addTask et performTask sont définis pour ajouter une nouvelle tâche et marquer une tâche comme terminée respectivement.
+* Les fonctions addTask et performTask sont définis pour ajouter une nouvelle tâche et marquer une tâche comme terminée respectivement.
+
 
 Il ne reste plus qu'à intégrer notre composant à notre page d'index
 
-**pages/index.vue**
 
-```vue
+```vue [pages/index.vue]
 <template>
   <v-row class="d-flex align-self-start py-12">
     <v-container>
@@ -231,4 +248,6 @@ Il ne reste plus qu'à intégrer notre composant à notre page d'index
 </template>
 ```
 
-[troisième partie](/blog/article/3-refactor-component)
+Voilà, maintenant nous pouvons gérer nos tâches, mais nous les perdons à chaque fois que nous fermons le navigateur, dans le prochain article, nous utiliserons Pinia pour sauvegarder nos tâches dans le navigateur.
+
+[troisième partie](/blog/article/3-to-do-list-refactor)

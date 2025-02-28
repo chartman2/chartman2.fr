@@ -69,7 +69,7 @@ const articles = reactive([
     src: 'i-mdi:language-ruby',
     color: 'red',
     title: 'Ruby',
-    text: 'Articles autour du langage Ruby.',
+    text: 'Ruby & Ruby on Rails.',
     link: '/blog/category/ror',
   },
   {
@@ -77,7 +77,7 @@ const articles = reactive([
     src: 'i-mdi:nuxt',
     color: 'green',
     title: 'Nuxt',
-    text: 'Articles autour du framework Nuxt.',
+    text: 'Framework Nuxt, Vuetify...',
     link: '/blog/category/nuxt',
   },
   {
@@ -85,7 +85,7 @@ const articles = reactive([
     src: 'i-mdi:docker',
     color: 'blue',
     title: 'Docker',
-    text: 'Articles autour de Docker.',
+    text: 'Docker, les containers, docker compose...',
     link: '/blog/category/docker',
   },
   {
@@ -93,7 +93,7 @@ const articles = reactive([
     src: 'i-mdi:checkbox-marked-circle-plus-outline',
     color: 'secondary',
     title: 'To-do list',
-    text: 'Construction d\'une To-do list.',
+    text: 'Construction d\'une To-do liste avec Nuxt & Rails.',
     link: '/blog/category/todolist',
   },
 ])

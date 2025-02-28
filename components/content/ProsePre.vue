@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto bg-surface-dark"
+    class="mx-auto bg-surface-dark my-2"
     theme="dark"
     rounded="lg"
   >
@@ -8,7 +8,8 @@
       <span class="align-center pt-2 pl-2">
         {{ props.filename }}
         <v-btn
-          class="float-right mr-2" 
+          class="float-right mr-2"
+          size="small"
           variant="outlined"
           color="primary"
           @click="copy(source)" 
