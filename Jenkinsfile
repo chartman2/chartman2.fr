@@ -14,6 +14,7 @@ pipeline {
                         sudo npm install -g pnpm
                         sudo npm install -g pm2
                         rm -Rf ./node_modules
+                        pnpm approve-builds
                         pnpm install
                         pnpm build
                     ''')

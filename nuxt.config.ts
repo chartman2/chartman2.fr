@@ -44,10 +44,6 @@ export default defineNuxtConfig({
         { name: 'twitter:image', content: '[twitter:image]' },
         { name: 'twitter:card', content: 'summary' },
       ],
-      noscript: [
-        // <noscript>JavaScript is required</noscript>
-        { children: 'JavaScript is required' },
-      ],
     },
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
@@ -152,10 +148,15 @@ export default defineNuxtConfig({
     },
   },
   i18n: {
-    locales: ['fr', 'en'],
+    locales: 
+    [
+      { "code": "en", "language": "en-US", "file": "en.js", "dir": "ltr" },
+      { "code": "fr", "language": "fr-FR", "file": "fr.js" }
+    ],
     defaultLocale: 'fr',
     defaultLocaleRouteNameSuffix: 'false',
-    vueI18n: './i18n.config.ts', // if you are using custom path, default
+    vueI18n: 'i18n.config.js',
+    langDir: './locales'
   },
   // css: [
   //   // SCSS file in the project
