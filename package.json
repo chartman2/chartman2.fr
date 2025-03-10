@@ -65,6 +65,15 @@
   "pnpm": {
     "overrides": {
       "@vercel/nft": "^0.27.4"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@sentry/cli",
+      "@tsparticles/engine",
+      "better-sqlite3",
+      "esbuild",
+      "sharp",
+      "vue-demi"
+    ]
   }
 }
